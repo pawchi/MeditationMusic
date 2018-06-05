@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Meditation Music</string>
+    <string name="imageButton1">Bamboo</string>
+    <string name="imageButton2">Forest</string>
+</resources>
