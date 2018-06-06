@@ -2,4 +2,5 @@
     <string name="app_name">Meditation Music</string>
     <string name="imageButton1">Bamboo</string>
     <string name="imageButton2">Forest</string>
+    <string name="title_activity_linear_layout">linear_layout</string>
 </resources>
