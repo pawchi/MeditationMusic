@@ -3,4 +3,7 @@
     <string name="imageButton1">Bamboo</string>
     <string name="imageButton2">Forest</string>
     <string name="title_activity_linear_layout">linear_layout</string>
+    <string name="title_activity_play_music">play_music</string>
+    <string name="play">play</string>
+    <string name="stop">stop</string>
 </resources>

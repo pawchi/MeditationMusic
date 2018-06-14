@@ -24,6 +24,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.chilon.meditationmusic.MainActivity" />
         </activity>
+        <activity
+            android:name=".Play_music"
+            android:label="@string/title_activity_play_music"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.chilon.meditationmusic.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

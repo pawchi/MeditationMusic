@@ -1,7 +1,10 @@
 package org.chilon.meditationmusic;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
@@ -18,5 +21,19 @@ public class MainActivity extends Activity {
         lst = (ListView) findViewById(R.id.listview);
         CustomListView customListView=new CustomListView(this,musicType,musicDescription,image);
         lst.setAdapter(customListView);
+
+        lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0) {
+                    Intent intent = new Intent(view.getContext(), Play_music.class);
+                    startActivityForResult(intent,0);
+                }
+                if(position==1){
+                    Intent intent = new Intent(view.getContext(), Play_music.class);
+                    startActivityForResult(intent,0);
+                }
+            }
+        });
     }
 }
