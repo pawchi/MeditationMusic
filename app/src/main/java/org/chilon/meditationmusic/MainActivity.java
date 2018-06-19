@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
         lst = (ListView) findViewById(R.id.listview);
         CustomListView customListView=new CustomListView(this,musicType,musicDescription,image);
         lst.setAdapter(customListView);
+        lst.setBackgroundResource(R.drawable.customshape);
 
         lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
