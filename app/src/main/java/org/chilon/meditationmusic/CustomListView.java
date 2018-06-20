@@ -14,15 +14,15 @@ import org.jetbrains.annotations.Nullable;
 public class CustomListView extends ArrayAdapter<String> {
 
     private String[] musicType;
-    private String[] musicDescription;
+    //private String[] musicDescription;
     private Integer[] image;
     private Activity context;
 
 
-    public CustomListView(Activity context,String[] musicType, String[] musicDescription, Integer[] image) {
+    public CustomListView(Activity context,String[] musicType, Integer[] image) {
         super(context,R.layout.listview_layout,musicType);
         this.musicType = musicType;
-        this.musicDescription = musicDescription;
+        //this.musicDescription = musicDescription;
         this.image = image;
         this.context = context;
     }
@@ -47,7 +47,7 @@ public class CustomListView extends ArrayAdapter<String> {
         }
         viewHolder.img.setImageResource(image[position]);
         viewHolder.tx1.setText(musicType[position]);
-        viewHolder.tx2.setText(musicDescription[position]);
+        //viewHolder.tx2.setText(musicDescription[position]);
 
         return r;
     }
@@ -58,7 +58,7 @@ public class CustomListView extends ArrayAdapter<String> {
 
         ViewHolder(View v){
             tx1=(TextView) v.findViewById(R.id.musictype);
-            tx2=(TextView) v.findViewById(R.id.description);
+            //tx2=(TextView) v.findViewById(R.id.description);
             img=(ImageView) v.findViewById(R.id.imageView);
         }
     }

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -19,6 +21,7 @@ public class Play_music extends Activity  {
     AudioManager audioManager;
     Handler handler;
     Runnable runnable;
+    boolean isPlay = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +31,9 @@ public class Play_music extends Activity  {
         skb=(SeekBar) findViewById(R.id.seekbar);
         handler=new Handler();
 
+
         stopButton = (Button) findViewById(R.id.stopid);
-        stopButton.setText("stop");
+        stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
         mdx = MediaPlayer.create(Play_music.this,R.raw.pani_lansienka);
 
         /*SeekBar Volume
@@ -58,14 +62,15 @@ public class Play_music extends Activity  {
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(stopButton.getText()== "stop") {
-                    stopButton.setText("play");
+                if(isPlay) {
+                    stopButton.setBackgroundResource(android.R.drawable.ic_media_play);
                     mdx.pause();
                     mdx = MediaPlayer.create(Play_music.this, R.raw.pani_lansienka);
-                    System.out.println("Status mdx jest: "+mdx.getCurrentPosition());
+                    isPlay=false;
                 } else {
-                    stopButton.setText("stop");
+                    stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
                     mdx.start();
+                    isPlay=true;
                 }
             }
         });
