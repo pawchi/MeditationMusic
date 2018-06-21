@@ -34,6 +34,10 @@ public class MainActivity extends Activity {
                     Intent intent = new Intent(view.getContext(), Play_music.class);
                     startActivityForResult(intent,0);
                 }
+                if(position==2){
+                    Intent intent = new Intent(view.getContext(), PlayMusicTwo.class);
+                    startActivityForResult(intent,0);
+                }
             }
         });
     }

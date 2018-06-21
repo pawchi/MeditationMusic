@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.constraint.ConstraintLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,7 +20,7 @@ public class Play_music extends Activity  {
     SeekBar skb;
     SeekBar skvolume;
     AudioManager audioManager;
-    Handler handler;
+    //Handler handler;
     Runnable runnable;
     boolean isPlay = true;
 
@@ -27,14 +28,20 @@ public class Play_music extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_music);
+
+        ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraintid);
+        constraintLayout.setBackgroundResource(R.drawable.background_play);
+
         getActionBar().setDisplayHomeAsUpEnabled(true);
         skb=(SeekBar) findViewById(R.id.seekbar);
-        handler=new Handler();
+        //handler=new Handler();
 
 
         stopButton = (Button) findViewById(R.id.stopid);
         stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
         mdx = MediaPlayer.create(Play_music.this,R.raw.pani_lansienka);
+        mdx.start();
+        mdx.setLooping(true);
 
         /*SeekBar Volume
         skvolume = (SeekBar) findViewById(R.id.seekVolume);
@@ -75,7 +82,7 @@ public class Play_music extends Activity  {
             }
         });
 
-        //SeekBar
+        /*//SeekBar
         mdx.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
@@ -100,9 +107,9 @@ public class Play_music extends Activity  {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
-        });
+        });*/
     }
-
+    /*
     public void playCycle(){
         skb.setProgress(mdx.getCurrentPosition());
 
@@ -133,5 +140,5 @@ public class Play_music extends Activity  {
         super.onDestroy();
         mdx.release();
         handler.removeCallbacks(runnable);
-    }
+    }*/
 }
