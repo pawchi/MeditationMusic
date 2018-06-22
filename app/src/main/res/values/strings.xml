@@ -7,4 +7,6 @@
     <string name="play">play</string>
     <string name="stop">stop</string>
     <string name="title_id">MUZYKA MEDYTACYJNA</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_play3">activity_play3</string>
 </resources>

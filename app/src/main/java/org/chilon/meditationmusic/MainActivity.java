@@ -12,6 +12,7 @@ public class MainActivity extends Activity {
     String[] musicType = {"Lake","Monk","Flower"};
     //String[] musicDescription = {"This is Lake","This is Monk","this is Flower"};
     Integer[] image = {R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere};
+    String musicTypeItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +28,23 @@ public class MainActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position==0) {
-                    Intent intent = new Intent(view.getContext(), Play_music.class);
+                    Intent intent = new Intent(view.getContext(), PlayMusicOne.class);
                     startActivityForResult(intent,0);
                 }
                 if(position==1){
-                    Intent intent = new Intent(view.getContext(), Play_music.class);
+                    Intent intent = new Intent(view.getContext(), PlayMusicTwo.class);
                     startActivityForResult(intent,0);
                 }
                 if(position==2){
-                    Intent intent = new Intent(view.getContext(), PlayMusicTwo.class);
+                    Intent intent = new Intent(view.getContext(), PlayMusicThree.class);
                     startActivityForResult(intent,0);
                 }
             }
         });
+    }
+
+    public String getMusicTypeItem(int position) {
+        musicTypeItem = musicType[position];
+        return musicTypeItem;
     }
 }

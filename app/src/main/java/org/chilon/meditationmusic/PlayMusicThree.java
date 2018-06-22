@@ -1,13 +1,13 @@
 package org.chilon.meditationmusic;
 
-import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class PlayMusicTwo extends Activity {
+public class PlayMusicThree extends Activity {
 
     private Button stopButton;
     private MediaPlayer mdx;
@@ -17,16 +17,16 @@ public class PlayMusicTwo extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_play2);
+        setContentView(R.layout.activity_play3);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         MainActivity mainActivity = new MainActivity();
-        textView = (TextView) findViewById(R.id.play_music2_main_text_id);
-        textView.setText(mainActivity.getMusicTypeItem(1));
+        textView = (TextView) findViewById(R.id.play_music3_main_text_id);
+        textView.setText(mainActivity.getMusicTypeItem(2));
 
         stopButton = (Button) findViewById(R.id.stopid);
         stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
-        mdx = MediaPlayer.create(PlayMusicTwo.this, R.raw.violin_guitar);
+        mdx = MediaPlayer.create(PlayMusicThree.this, R.raw.power_rythm);
         mdx.start();
         mdx.setLooping(true);
 
@@ -37,7 +37,7 @@ public class PlayMusicTwo extends Activity {
                 if (isPlay) {
                     stopButton.setBackgroundResource(android.R.drawable.ic_media_play);
                     mdx.pause();
-                    mdx = MediaPlayer.create(PlayMusicTwo.this, R.raw.violin_guitar);
+                    mdx = MediaPlayer.create(PlayMusicThree.this, R.raw.power_rythm);
                     isPlay = false;
                 } else {
                     stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
@@ -47,4 +47,5 @@ public class PlayMusicTwo extends Activity {
             }
         });
     }
+
 }
