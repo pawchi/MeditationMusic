@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
@@ -39,6 +41,15 @@ public class MainActivity extends Activity {
                     Intent intent = new Intent(view.getContext(), PlayMusicThree.class);
                     startActivityForResult(intent,0);
                 }
+            }
+        });
+
+        //Settings on main View
+        Button settings = (Button) findViewById(R.id.settingsbutton);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,PopSetupWindow.class));
             }
         });
     }
