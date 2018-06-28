@@ -15,6 +15,7 @@ public class MainActivity extends Activity {
     //String[] musicDescription = {"This is Lake","This is Monk","this is Flower"};
     Integer[] image = {R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere};
     String musicTypeItem;
+    Integer musicFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

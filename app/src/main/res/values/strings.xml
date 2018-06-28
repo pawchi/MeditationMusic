@@ -9,4 +9,6 @@
     <string name="title_id">MUZYKA MEDYTACYJNA</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_play3">activity_play3</string>
+    <string name="popup_text_id">USTAW CAŁKOWITY CZAS TIMERA</string>
+
 </resources>
