@@ -9,6 +9,37 @@
     <string name="title_id">MUZYKA MEDYTACYJNA</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_play3">activity_play3</string>
-    <string name="popup_text_id">USTAW CAŁKOWITY CZAS TIMERA</string>
+
+    <!--Popup for timer   -->
+    <string name="popup_text_id">CZAS TIMERA: </string>
+    <string name="button_ok_popup">OK</string>
+    <string name="button_cancel_popup">CANCEL</string>
+    <string name="no_timer">Bez timera</string>
+    <string name="plus">+</string>
+
+    <string name="one_min">1 minuta</string>
+    <string name="two_min">2 minuty</string>
+    <string name="three_min">3 minuty</string>
+    <string name="four_min">4 minuty</string>
+    <string name="five_min">5 minut</string>
+    <string name="six_min">6 minut</string>
+    <string name="seven_min">7 minut</string>
+    <string name="eight_min">8 minut</string>
+    <string name="nine_min">9 minut</string>
+
+    <string name="ten_min">10 minut</string>
+    <string name="twenty_min">20 minut</string>
+    <string name="thirty_min">30 minut</string>
+    <string name="fourty_min">40 minut</string>
+    <string name="fifty_min">50 minut</string>
+    <string name="sixty_min">60 minut</string>
+
+    <string name="one_hour">1 godz.</string>
+    <string name="twoo_hours">2 godz.</string>
+    <string name="three_hours">3 godz.</string>
+    <string name="four_hours">4 godz.</string>
+    <string name="five_hours">5 godz.</string>
+    <string name="six_hours">6 godz.</string>
+
 
 </resources>
