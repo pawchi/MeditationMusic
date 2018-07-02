@@ -49,7 +49,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="20dp"
-        android:gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/lin_lay_bottom_buttons_popup"
         app:layout_constraintLeft_toLeftOf="@+id/popup"
@@ -144,7 +144,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="100dp"
             android:text="@string/plus"
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/radioGroup2"
@@ -208,72 +207,29 @@
                 android:layout_height="wrap_content"
                 android:onClick="rbClick2"
                 android:text="@string/sixty_min" />
+
+            <RadioButton
+                android:id="@+id/radioButton18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="rbClick2"
+                android:text="@string/seventy_min" />
+
+            <RadioButton
+                android:id="@+id/radioButton19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="rbClick2"
+                android:text="@string/eighty_min" />
+
+            <RadioButton
+                android:id="@+id/radioButton20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="rbClick2"
+                android:text="@string/ninety_min" />
         </RadioGroup>
 
-        <TextView
-            android:id="@+id/text_plus2_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="100dp"
-            android:text="@string/plus"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toStartOf="@+id/radioGroup3"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/radioGroup2"
-            app:layout_constraintTop_toTopOf="@+id/radioGroup2" />
-
-        <RadioGroup
-            android:id="@+id/radioGroup3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/holo_blue_dark"
-            app:layout_constraintStart_toEndOf="@+id/radioGroup2"
-            app:layout_constraintTop_toBottomOf="@+id/popup_text_id">
-
-            <RadioButton
-                android:id="@+id/radioButton21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/no_timer" />
-
-            <RadioButton
-                android:id="@+id/radioButton22"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/one_hour" />
-
-            <RadioButton
-                android:id="@+id/radioButton23"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/twoo_hours" />
-
-            <RadioButton
-                android:id="@+id/radioButton24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/three_hours" />
-
-            <RadioButton
-                android:id="@+id/radioButton25"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/four_hours" />
-
-            <RadioButton
-                android:id="@+id/radioButton26"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/five_hours" />
-
-            <RadioButton
-                android:id="@+id/radioButton27"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/six_hours" />
-        </RadioGroup>
 
     </LinearLayout>
 
@@ -281,20 +237,21 @@
         android:id="@+id/lin_lay_bottom_buttons_popup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
+        android:gravity="center_horizontal"
         android:orientation="horizontal"
-        app:layout_constraintLeft_toLeftOf="@+id/popup"
-        app:layout_constraintTop_toBottomOf="@+id/linear_layout_popup1"
         app:layout_constraintBottom_toBottomOf="@+id/popup"
-        >
+        app:layout_constraintLeft_toLeftOf="@+id/popup"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_popup1">
 
         <Button
             android:id="@+id/button_ok_popup"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="10dp"
-            android:layout_weight="1"
+
             android:background="@android:color/darker_gray"
             android:text="@string/button_ok_popup"
             app:layout_constraintLeft_toLeftOf="@+id/popup"
@@ -303,11 +260,11 @@
         <Button
             android:id="@+id/button_cancel_popup"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="5dp"
-            android:layout_weight="1"
+
             android:background="@android:color/darker_gray"
             android:text="@string/button_cancel_popup"
             app:layout_constraintRight_toRightOf="@+id/popup"

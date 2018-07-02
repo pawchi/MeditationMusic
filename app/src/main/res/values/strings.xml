@@ -14,7 +14,7 @@
     <string name="popup_text_id">CZAS TIMERA: </string>
     <string name="button_ok_popup">OK</string>
     <string name="button_cancel_popup">CANCEL</string>
-    <string name="no_timer">Bez timera</string>
+    <string name="no_timer">0 minut</string>
     <string name="plus">+</string>
 
     <string name="one_min">1 minuta</string>
@@ -33,13 +33,10 @@
     <string name="fourty_min">40 minut</string>
     <string name="fifty_min">50 minut</string>
     <string name="sixty_min">60 minut</string>
+    <string name="seventy_min">70 minut</string>
+    <string name="eighty_min">80 minut</string>
+    <string name="ninety_min">90 minut</string>
 
-    <string name="one_hour">1 godz.</string>
-    <string name="twoo_hours">2 godz.</string>
-    <string name="three_hours">3 godz.</string>
-    <string name="four_hours">4 godz.</string>
-    <string name="five_hours">5 godz.</string>
-    <string name="six_hours">6 godz.</string>
 
 
 </resources>

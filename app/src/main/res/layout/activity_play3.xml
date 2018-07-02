@@ -8,7 +8,7 @@
     tools:context=".PlayMusicThree">
 
     <Button
-        android:id="@+id/playid"
+        android:id="@+id/timerid"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_marginEnd="60dp"
@@ -27,7 +27,7 @@
         android:layout_marginStart="60dp"
         android:background="@android:drawable/ic_media_pause"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/playid"
+        app:layout_constraintEnd_toStartOf="@+id/timerid"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

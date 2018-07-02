@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,PopSetupWindow.class));
+                //startActivity(new Intent(MainActivity.this,PopSetupWindow.class));
             }
         });
     }

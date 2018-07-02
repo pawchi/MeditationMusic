@@ -2,6 +2,7 @@ package org.chilon.meditationmusic;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -14,16 +15,16 @@ public class PopSetupWindow extends Activity {
     RadioGroup rgMinTenth;
     RadioButton rbMunutes;
     RadioButton rbMinTenth;
-    TextView timerText1;
-    TextView timerText2;
-    int timerTime;
+    TextView timerText;
+    int timerTime1;
+    int timerTime2;
     String rb_1_result;
     String rb_2_result;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.popsetup);
+        setContentView(R.layout.popsetup_timer);
         rgMinutes=(RadioGroup) findViewById(R.id.radioGroup);
         rgMinTenth=(RadioGroup) findViewById(R.id.radioGroup2);
 
@@ -35,30 +36,62 @@ public class PopSetupWindow extends Activity {
 
         //(int)(width*.9) = 90%
         getWindow().setLayout((int)(width*.9),(int)(height*.7));
-
     }
 
-    //RadioButton method
-    public String rbClick1(View view){
+    //RadioButton methods
+    public int rbClick1(View view){
         int radioButtonId_1 = rgMinutes.getCheckedRadioButtonId();
         rbMunutes = (RadioButton) findViewById(radioButtonId_1);
         rb_1_result = rbMunutes.getText().toString();
+        timerText = (TextView) findViewById(R.id.popup_text_time);
 
-        timerText1 = (TextView) findViewById(R.id.popup_text_time);
-        String sumOfRadioButtons = rb_1_result+" + "+ rb_2_result;
-        timerText1.setText(sumOfRadioButtons);
+            //extract all digits from String
+            String rb1_only_digits = rb_1_result.replaceAll("\\D+", "");
+            timerTime1 = Integer.parseInt(rb1_only_digits);
 
-        return rb_1_result;
+        int sumOfRadioButtons = timerTime1+timerTime2;
+        timerText.setText(sumOfRadioButtons+" min");
+
+        return timerTime1;
     }
 
-    public String rbClick2(View view){
+    public int rbClick2(View view){
         int radioButtonId_2 = rgMinTenth.getCheckedRadioButtonId();
         rbMinTenth = (RadioButton) findViewById(radioButtonId_2);
         rb_2_result = rbMinTenth.getText().toString();
-        return rb_2_result;
+        timerText = (TextView) findViewById(R.id.popup_text_time);
+
+            //extract all digits from String
+            String rb2_only_digits = rb_2_result.replaceAll("\\D+", "");
+            timerTime2 = Integer.parseInt(rb2_only_digits);
+
+        int sumOfRadioButtons = timerTime1+timerTime2;
+        timerText.setText(sumOfRadioButtons+" min");
+
+        return timerTime2;
     }
 
-    public void sumOfRadioButtons(View view){
 
+    //Timer
+    private CountDownTimer countDownTimer;
+    private boolean timerRunning;
+    private long timeLeftInMillis = 0; //Setup this value by click OK in popup timer
+
+    private void startTimer(){
+        countDownTimer = new CountDownTimer(timeLeftInMillis,60000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeftInMillis=millisUntilFinished;
+
+            }
+
+            @Override
+            public void onFinish() {
+                timerRunning = false;
+
+            }
+        };
     }
+
+
 }

@@ -1,5 +1,6 @@
 package org.chilon.meditationmusic;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 public class PlayMusicOne extends Activity  {
 
     private Button stopButton;
+    private Button timerButton;
     private MediaPlayer mdx;
     boolean isPlay = true;
     private TextView textView;
@@ -24,13 +26,15 @@ public class PlayMusicOne extends Activity  {
         textView = (TextView) findViewById(R.id.play_music1_main_text_id);
         textView.setText(mainActivity.getMusicTypeItem(0));
 
+        timerButton = (Button) findViewById(R.id.timerid);
+
         stopButton = (Button) findViewById(R.id.stopid);
         stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
         mdx = MediaPlayer.create(PlayMusicOne.this, R.raw.pani_lansienka);
         mdx.start();
         mdx.setLooping(true);
 
-        //Button
+        //Button Play/Pause
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +48,15 @@ public class PlayMusicOne extends Activity  {
                     mdx.start();
                     isPlay = true;
                 }
+            }
+        });
+
+        //Button Timer
+        timerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PlayMusicOne.this,PopSetupWindow.class));
+                mdx.pause();
             }
         });
     }
