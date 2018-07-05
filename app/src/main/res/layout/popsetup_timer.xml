@@ -2,22 +2,23 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/popup"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:scrollbarAlwaysDrawHorizontalTrack="false"
-    android:scrollbarAlwaysDrawVerticalTrack="false">
+    android:layout_gravity="center_horizontal|center_vertical"
+    android:background="@drawable/timer_border"
+    >
 
     <LinearLayout
         android:id="@+id/lin_lay_timer_score_popup"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="horizontal"
-        app:layout_constraintLeft_toLeftOf="@+id/popup"
-        app:layout_constraintTop_toTopOf="@+id/popup"
         app:layout_constraintBottom_toTopOf="@+id/linear_layout_popup1"
-        android:gravity="center_horizontal">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/popup">
 
 
         <TextView
@@ -36,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="60s"
+            android:text="@string/popup_text_time"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/popup_text_id"
@@ -60,7 +61,8 @@
             android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/darker_gray"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/holo_blue_dark"
             android:fadingEdge="none|vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/popup_text_id">
@@ -155,7 +157,8 @@
             android:id="@+id/radioGroup2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_blue_light"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/holo_blue_dark"
             app:layout_constraintStart_toEndOf="@+id/radioGroup"
             app:layout_constraintTop_toBottomOf="@+id/popup_text_id">
 
@@ -235,40 +238,40 @@
 
     <LinearLayout
         android:id="@+id/lin_lay_bottom_buttons_popup"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-
-        android:gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical|center_horizontal"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/popup"
-        app:layout_constraintLeft_toLeftOf="@+id/popup"
-        app:layout_constraintTop_toBottomOf="@+id/linear_layout_popup1">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_popup1"
+        android:layout_marginBottom="10dp">
 
         <Button
-            android:id="@+id/button_ok_popup"
+            android:id="@+id/button_timer_ok"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginStart="10dp"
-
+            android:layout_marginStart="5dp"
             android:background="@android:color/darker_gray"
-            android:text="@string/button_ok_popup"
+            android:text="@string/button_timer_ok"
             app:layout_constraintLeft_toLeftOf="@+id/popup"
             app:layout_constraintTop_toBottomOf="@+id/linear_layout_popup1" />
 
         <Button
-            android:id="@+id/button_cancel_popup"
+            android:id="@+id/button_timer_cancel"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-
             android:background="@android:color/darker_gray"
-            android:text="@string/button_cancel_popup"
+            android:text="@string/button_timer_cancel"
             app:layout_constraintRight_toRightOf="@+id/popup"
             app:layout_constraintTop_toBottomOf="@+id/linear_layout_popup1" />
+
     </LinearLayout>
 
 

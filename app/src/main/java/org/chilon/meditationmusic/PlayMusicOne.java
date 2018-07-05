@@ -15,12 +15,17 @@ public class PlayMusicOne extends Activity  {
     private MediaPlayer mdx;
     boolean isPlay = true;
     private TextView textView;
+    TextView viewLeftTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play1);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        viewLeftTime = (TextView) findViewById(R.id.timer_left_id);
 
         MainActivity mainActivity = new MainActivity();
         textView = (TextView) findViewById(R.id.play_music1_main_text_id);
@@ -52,12 +57,31 @@ public class PlayMusicOne extends Activity  {
         });
 
         //Button Timer
+
         timerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(PlayMusicOne.this,PopSetupWindow.class));
-                mdx.pause();
+
             }
         });
     }
+
+/*
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        int timerTime = getIntent().getIntExtra("timer time",0);
+        //String timer = getIntent().getStringExtra("timer time");
+        viewLeftTime.setText(timerTime);
+    }*/
+/*
+    @Override
+    protected void onStart(){
+        super.onStart();
+        int timerTime = getIntent().getIntExtra("timer time",0);
+        //String timer = getIntent().getStringExtra("timer time");
+        viewLeftTime.setText(timerTime);
+    }*/
 }

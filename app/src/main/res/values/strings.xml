@@ -12,8 +12,9 @@
 
     <!--Popup for timer   -->
     <string name="popup_text_id">CZAS TIMERA: </string>
-    <string name="button_ok_popup">OK</string>
-    <string name="button_cancel_popup">CANCEL</string>
+    <string name="popup_text_time">0 min</string>
+    <string name="button_timer_ok">OK</string>
+    <string name="button_timer_cancel">CANCEL</string>
     <string name="no_timer">0 minut</string>
     <string name="plus">+</string>
 
