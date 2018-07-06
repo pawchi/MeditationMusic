@@ -28,9 +28,6 @@ public class PopSetupWindow extends Activity {
     Button timerOk;
     Button timerCancel;
     public int sumOfRadioButtons;
-    private CountDownTimer countDownTimer;
-    private boolean timerRunning;
-    private long timeLeftInMillis = 0; //Setup this value by click OK in popup timer
     public static final String RESPONSE = "Response";
 
     @Override
@@ -57,8 +54,6 @@ public class PopSetupWindow extends Activity {
             @Override
             public void onClick(View v) {
                 if(sumOfRadioButtons!=0){
-                    timeLeftInMillis=sumOfRadioButtons;
-                    //startTimer();
                     prepareResponse();
                 }
                 finish();
@@ -104,34 +99,6 @@ public class PopSetupWindow extends Activity {
         timerText.setText(sumOfRadioButtons+" min");
 
         return timerTime2;
-    }
-
-
-    //Timer
-
-
-    private void startTimer(){
-        countDownTimer = new CountDownTimer(timeLeftInMillis,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                timeLeftInMillis=millisUntilFinished;
-                updateCountDowntText();
-            }
-
-            @Override
-            public void onFinish() {
-                timerRunning = false;
-
-            }
-        }.start();
-        timerRunning = true;
-    }
-
-    private void updateCountDowntText(){
-        int minutes = (int) (timeLeftInMillis/1000)/60;
-        int seconds = (int) (timeLeftInMillis/1000)%60;
-        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d",minutes,seconds);
-
     }
 
     private void prepareResponse(){

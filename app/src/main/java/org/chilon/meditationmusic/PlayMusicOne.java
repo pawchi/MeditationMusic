@@ -1,12 +1,16 @@
 package org.chilon.meditationmusic;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.Locale;
 
 public class PlayMusicOne extends Activity  {
 
@@ -17,6 +21,9 @@ public class PlayMusicOne extends Activity  {
     private TextView textView;
     TextView viewLeftTime;
     private static final int POP_SETUP_WINDOW_CODE = 111;
+    private CountDownTimer countDownTimer;
+    private boolean timerRunning;
+    private long timeLeftInMillis = 0; //Setup this value by click OK in popup timer
 
 
     @Override
@@ -81,8 +88,51 @@ public class PlayMusicOne extends Activity  {
 
     private void insertResponse(int response){
         if(response!=0) {
-            String res = String.valueOf(response);
-            viewLeftTime.setText(res);
+            timeLeftInMillis = response*60*1000;
+            startTimer();
+            //String res = String.valueOf(response);
+            //viewLeftTime.setText(res);
         }
+    }
+
+    //Stop MediaPlayer by changing activity
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mdx.stop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mdx.stop();
+    }
+
+    //Timer
+    private void startTimer(){
+        countDownTimer = new CountDownTimer(timeLeftInMillis,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeftInMillis=millisUntilFinished;
+                updateCountDowntText();
+            }
+
+            @Override
+            public void onFinish() {
+                timerRunning = false;
+
+            }
+        }.start();
+        timerRunning = true;
+        //timerButton.setText();
+    }
+
+    private void updateCountDowntText(){
+        int minutes = (int) (timeLeftInMillis/1000)/60;
+        int seconds = (int) (timeLeftInMillis/1000)%60;
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d",minutes,seconds);
+        viewLeftTime.setText(timeLeftFormatted);
+        timerButton.setText(timeLeftFormatted);
+        //timerButton.setBackgroundColor(Color.parseColor("#FFFFFFFF"));
     }
 }
