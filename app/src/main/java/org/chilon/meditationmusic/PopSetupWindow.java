@@ -31,6 +31,7 @@ public class PopSetupWindow extends Activity {
     private CountDownTimer countDownTimer;
     private boolean timerRunning;
     private long timeLeftInMillis = 0; //Setup this value by click OK in popup timer
+    public static final String RESPONSE = "Response";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,11 +59,9 @@ public class PopSetupWindow extends Activity {
                 if(sumOfRadioButtons!=0){
                     timeLeftInMillis=sumOfRadioButtons;
                     //startTimer();
-
-                    Intent intent = new Intent(PopSetupWindow.this,PlayMusicOne.class);
-                    intent.putExtra("timer time",sumOfRadioButtons);
+                    prepareResponse();
                 }
-                //finish();
+                finish();
             }
         });
         timerCancel.setOnClickListener(new View.OnClickListener() {
@@ -133,5 +132,11 @@ public class PopSetupWindow extends Activity {
         int seconds = (int) (timeLeftInMillis/1000)%60;
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d",minutes,seconds);
 
+    }
+
+    private void prepareResponse(){
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra(RESPONSE,sumOfRadioButtons);
+        setResult(RESULT_OK,resultIntent);
     }
 }

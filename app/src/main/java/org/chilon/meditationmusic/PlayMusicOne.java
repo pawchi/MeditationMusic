@@ -16,6 +16,7 @@ public class PlayMusicOne extends Activity  {
     boolean isPlay = true;
     private TextView textView;
     TextView viewLeftTime;
+    private static final int POP_SETUP_WINDOW_CODE = 111;
 
 
     @Override
@@ -57,31 +58,31 @@ public class PlayMusicOne extends Activity  {
         });
 
         //Button Timer
-
         timerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PlayMusicOne.this,PopSetupWindow.class));
+                //startActivity(new Intent(PlayMusicOne.this,PopSetupWindow.class));
+                Intent intent = new Intent(getApplicationContext(),PopSetupWindow.class);
+                startActivityForResult(intent,POP_SETUP_WINDOW_CODE);
 
             }
         });
     }
 
-/*
+    //Response from PopSetupWindow
     @Override
-    protected void onResume(){
-        super.onResume();
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(POP_SETUP_WINDOW_CODE==requestCode){
+            int popSetupResponse = data.getIntExtra(PopSetupWindow.RESPONSE,-1);
+            insertResponse(popSetupResponse);
+        }
+    }
 
-        int timerTime = getIntent().getIntExtra("timer time",0);
-        //String timer = getIntent().getStringExtra("timer time");
-        viewLeftTime.setText(timerTime);
-    }*/
-/*
-    @Override
-    protected void onStart(){
-        super.onStart();
-        int timerTime = getIntent().getIntExtra("timer time",0);
-        //String timer = getIntent().getStringExtra("timer time");
-        viewLeftTime.setText(timerTime);
-    }*/
+    private void insertResponse(int response){
+        if(response!=0) {
+            String res = String.valueOf(response);
+            viewLeftTime.setText(res);
+        }
+    }
 }
