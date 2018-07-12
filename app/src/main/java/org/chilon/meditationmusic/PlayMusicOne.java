@@ -17,7 +17,6 @@ public class PlayMusicOne extends Activity  {
     private Button stopButton;
     private Button timerButton;
     private MediaPlayer mdx;
-    boolean isPlay = true;
     private TextView textView;
     TextView viewLeftTime;
     private static final int POP_SETUP_WINDOW_CODE = 111;
@@ -34,6 +33,7 @@ public class PlayMusicOne extends Activity  {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewLeftTime = (TextView) findViewById(R.id.timer_left_id);
+        viewLeftTime.setVisibility(View.INVISIBLE);
 
         MainActivity mainActivity = new MainActivity();
         textView = (TextView) findViewById(R.id.play_music1_main_text_id);
@@ -43,23 +43,30 @@ public class PlayMusicOne extends Activity  {
 
         stopButton = (Button) findViewById(R.id.stopid);
         stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
-        mdx = MediaPlayer.create(PlayMusicOne.this, R.raw.pani_lansienka);
+
+
+        mdx= MediaPlayer.create(PlayMusicOne.this,R.raw.intro);
         mdx.start();
-        mdx.setLooping(true);
+        mdx.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mdx = MediaPlayer.create(PlayMusicOne.this, R.raw.pani_lansienka);
+                mdx.start();
+                mdx.setLooping(true);
+            }
+        });
+
 
         //Button Play/Pause
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isPlay) {
+                if (mdx.isPlaying()) {
                     stopButton.setBackgroundResource(android.R.drawable.ic_media_play);
                     mdx.pause();
-                    mdx = MediaPlayer.create(PlayMusicOne.this, R.raw.pani_lansienka);
-                    isPlay = false;
                 } else {
                     stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
                     mdx.start();
-                    isPlay = true;
                 }
             }
         });
@@ -68,7 +75,7 @@ public class PlayMusicOne extends Activity  {
         timerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(PlayMusicOne.this,PopSetupWindow.class));
+
                 Intent intent = new Intent(getApplicationContext(),PopSetupWindow.class);
                 startActivityForResult(intent,POP_SETUP_WINDOW_CODE);
 
@@ -90,6 +97,7 @@ public class PlayMusicOne extends Activity  {
         if(response!=0) {
             timeLeftInMillis = response*60*1000;
             startTimer();
+            mdx.start();
             //String res = String.valueOf(response);
             //viewLeftTime.setText(res);
         }
@@ -99,13 +107,13 @@ public class PlayMusicOne extends Activity  {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mdx.stop();
+        //mdx.stop();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mdx.stop();
+        //mdx.stop();
     }
 
     //Timer
@@ -115,11 +123,15 @@ public class PlayMusicOne extends Activity  {
             public void onTick(long millisUntilFinished) {
                 timeLeftInMillis=millisUntilFinished;
                 updateCountDowntText();
+                timerButton.setBackgroundResource(android.R.drawable.toast_frame);
             }
 
             @Override
             public void onFinish() {
                 timerRunning = false;
+                mdx.stop();
+                timerButton.setBackgroundResource(android.R.drawable.ic_menu_recent_history);
+                timerButton.setText("");
 
             }
         }.start();
@@ -131,7 +143,6 @@ public class PlayMusicOne extends Activity  {
         int minutes = (int) (timeLeftInMillis/1000)/60;
         int seconds = (int) (timeLeftInMillis/1000)%60;
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d",minutes,seconds);
-        viewLeftTime.setText(timeLeftFormatted);
         timerButton.setText(timeLeftFormatted);
         //timerButton.setBackgroundColor(Color.parseColor("#FFFFFFFF"));
     }
