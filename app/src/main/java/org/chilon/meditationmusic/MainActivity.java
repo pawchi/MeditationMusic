@@ -36,12 +36,16 @@ public class MainActivity extends Activity {
                     startActivity(intent);
                 }
                 if(position==1){
-                    Intent intent = new Intent(view.getContext(), PlayMusicTwo.class);
-                    startActivityForResult(intent,0);
+                    Intent intent = new Intent(getApplicationContext(), PlayMusicOne.class);
+                    intent.putExtra(MAIN_RESPONSE,1);
+                    setResult(RESULT_OK,intent);
+                    startActivity(intent);
                 }
                 if(position==2){
-                    Intent intent = new Intent(view.getContext(), PlayMusicThree.class);
-                    startActivityForResult(intent,0);
+                    Intent intent = new Intent(getApplicationContext(), PlayMusicOne.class);
+                    intent.putExtra(MAIN_RESPONSE,2);
+                    setResult(RESULT_OK,intent);
+                    startActivity(intent);
                 }
             }
         });

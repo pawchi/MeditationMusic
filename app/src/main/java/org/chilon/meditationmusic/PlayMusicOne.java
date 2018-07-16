@@ -44,11 +44,30 @@ public class PlayMusicOne extends Activity  {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Response from MainActivity
-        //***************************
         int extras = getIntent().getIntExtra(MainActivity.MAIN_RESPONSE,-1);
         if(extras==0){
             resources = getResources();
             backgroudImage = resources.getIdentifier("background_play","drawable",this.getPackageName());
+            musicFileIntro = resources.getIdentifier("water","raw",this.getPackageName());
+            musicFileMain = resources.getIdentifier("water","raw",this.getPackageName());
+
+            MainActivity mainActivity = new MainActivity();
+            mainTitleText = mainActivity.getMusicTypeItem(extras);
+        }
+
+        if(extras==1){
+            resources = getResources();
+            backgroudImage = resources.getIdentifier("monk_background","drawable",this.getPackageName());
+            musicFileIntro = resources.getIdentifier("intro","raw",this.getPackageName());
+            musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
+
+            MainActivity mainActivity = new MainActivity();
+            mainTitleText = mainActivity.getMusicTypeItem(extras);
+        }
+
+        if(extras==2){
+            resources = getResources();
+            backgroudImage = resources.getIdentifier("monk_background","drawable",this.getPackageName());
             musicFileIntro = resources.getIdentifier("intro","raw",this.getPackageName());
             musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
 
@@ -57,7 +76,6 @@ public class PlayMusicOne extends Activity  {
         }
 
 
-        //***************************
 
         background = (ConstraintLayout) findViewById(R.id.constraintid);
         background.setBackgroundResource(backgroudImage);
