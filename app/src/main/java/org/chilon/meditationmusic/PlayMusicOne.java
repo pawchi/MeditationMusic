@@ -1,11 +1,12 @@
 package org.chilon.meditationmusic;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
 import android.os.CountDownTimer;
+import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,12 +18,22 @@ public class PlayMusicOne extends Activity  {
     private Button stopButton;
     private Button timerButton;
     private MediaPlayer mdx;
-    private TextView textView;
+    private TextView mainTitle;
     TextView viewLeftTime;
-    private static final int POP_SETUP_WINDOW_CODE = 111;
+    private static final int POP_SETUP_WINDOW_CODE = 1;
     private CountDownTimer countDownTimer;
     private boolean timerRunning;
     private long timeLeftInMillis = 0; //Setup this value by click OK in popup timer
+    ConstraintLayout background;
+    int backgroudImage;
+    int musicFileIntro;
+    int musicFileMain;
+    String mainTitleText;
+    Resources resources;
+
+    //Set in MainActivity
+
+
 
 
     @Override
@@ -32,25 +43,44 @@ public class PlayMusicOne extends Activity  {
         setContentView(R.layout.activity_play1);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //Response from MainActivity
+        //***************************
+        int extras = getIntent().getIntExtra(MainActivity.MAIN_RESPONSE,-1);
+        if(extras==0){
+            resources = getResources();
+            backgroudImage = resources.getIdentifier("background_play","drawable",this.getPackageName());
+            musicFileIntro = resources.getIdentifier("intro","raw",this.getPackageName());
+            musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
+
+            MainActivity mainActivity = new MainActivity();
+            mainTitleText = mainActivity.getMusicTypeItem(extras);
+        }
+
+
+        //***************************
+
+        background = (ConstraintLayout) findViewById(R.id.constraintid);
+        background.setBackgroundResource(backgroudImage);
+
+        mainTitle = (TextView) findViewById(R.id.play_music1_main_text_id);
+        mainTitle.setText(mainTitleText);
+
         viewLeftTime = (TextView) findViewById(R.id.timer_left_id);
         viewLeftTime.setVisibility(View.INVISIBLE);
-
-        MainActivity mainActivity = new MainActivity();
-        textView = (TextView) findViewById(R.id.play_music1_main_text_id);
-        textView.setText(mainActivity.getMusicTypeItem(0));
 
         timerButton = (Button) findViewById(R.id.timerid);
 
         stopButton = (Button) findViewById(R.id.stopid);
         stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
 
-
-        mdx= MediaPlayer.create(PlayMusicOne.this,R.raw.intro);
+        //play intro
+        mdx= MediaPlayer.create(PlayMusicOne.this, musicFileIntro);
         mdx.start();
+        //play when intro finished
         mdx.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                mdx = MediaPlayer.create(PlayMusicOne.this, R.raw.pani_lansienka);
+                mdx = MediaPlayer.create(PlayMusicOne.this, musicFileMain);
                 mdx.start();
                 mdx.setLooping(true);
             }
@@ -77,13 +107,13 @@ public class PlayMusicOne extends Activity  {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getApplicationContext(),PopSetupWindow.class);
-                startActivityForResult(intent,POP_SETUP_WINDOW_CODE);
+                startActivityForResult(intent,1);
 
             }
         });
     }
 
-    //Response from PopSetupWindow
+    //Response from PopSetupWindow and MainActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
