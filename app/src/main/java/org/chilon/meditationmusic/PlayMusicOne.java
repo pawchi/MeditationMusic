@@ -31,10 +31,6 @@ public class PlayMusicOne extends Activity  {
     String mainTitleText;
     Resources resources;
 
-    //Set in MainActivity
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +65,16 @@ public class PlayMusicOne extends Activity  {
             resources = getResources();
             backgroudImage = resources.getIdentifier("monk_background","drawable",this.getPackageName());
             musicFileIntro = resources.getIdentifier("intro","raw",this.getPackageName());
+            musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
+
+            MainActivity mainActivity = new MainActivity();
+            mainTitleText = mainActivity.getMusicTypeItem(extras);
+        }
+
+        if(extras==3){
+            resources = getResources();
+            backgroudImage = resources.getIdentifier("mountain_background","drawable",this.getPackageName());
+            musicFileIntro = resources.getIdentifier("water","raw",this.getPackageName());
             musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
 
             MainActivity mainActivity = new MainActivity();

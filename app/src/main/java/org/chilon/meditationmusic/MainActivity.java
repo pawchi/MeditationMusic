@@ -12,8 +12,8 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
     ListView lst;
-    String[] musicType = {"Lake","Monk","Flower"};
-    Integer[] image = {R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere};
+    String[] musicType = {"Lake","Monk","Flower","Moon"};
+    Integer[] image = {R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.moon_small};
     String musicTypeItem;
     public static final String MAIN_RESPONSE = "main_response";
 
@@ -44,6 +44,12 @@ public class MainActivity extends Activity {
                 if(position==2){
                     Intent intent = new Intent(getApplicationContext(), PlayMusicOne.class);
                     intent.putExtra(MAIN_RESPONSE,2);
+                    setResult(RESULT_OK,intent);
+                    startActivity(intent);
+                }
+                if(position==3){
+                    Intent intent = new Intent(getApplicationContext(), PlayMusicOne.class);
+                    intent.putExtra(MAIN_RESPONSE,3);
                     setResult(RESULT_OK,intent);
                     startActivity(intent);
                 }

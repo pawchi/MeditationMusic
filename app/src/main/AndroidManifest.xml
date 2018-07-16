@@ -25,22 +25,6 @@
                 android:value="org.chilon.meditationmusic.MainActivity" />
         </activity>
         <activity
-            android:name=".PlayMusicTwo"
-            android:label="activity_play2"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.chilon.meditationmusic.MainActivity" />
-        </activity>
-        <activity
-            android:name=".PlayMusicThree"
-            android:label="@string/title_activity_play3"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.chilon.meditationmusic.MainActivity" />
-        </activity>
-        <activity
             android:name=".PopSetupWindow"
             android:theme="@style/AppTheme.CustomTheme" />
 
