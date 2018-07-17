@@ -12,8 +12,9 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
     ListView lst;
-    String[] musicType = {"Lake","Monk","Flower","Moon"};
-    Integer[] image = {R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.moon_small};
+    String[] musicType = {"Lake","Monk","Flower","Moon","Bird","Water","Wind"};
+    Integer[] image = {R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.moon_small,
+                        R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere};
     String musicTypeItem;
     public static final String MAIN_RESPONSE = "main_response";
 
@@ -29,30 +30,11 @@ public class MainActivity extends Activity {
         lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(position==0) {
+
                     Intent intent = new Intent(getApplicationContext(), PlayMusicOne.class);
-                    intent.putExtra(MAIN_RESPONSE,0);
+                    intent.putExtra(MAIN_RESPONSE,position);
                     setResult(RESULT_OK,intent);
                     startActivity(intent);
-                }
-                if(position==1){
-                    Intent intent = new Intent(getApplicationContext(), PlayMusicOne.class);
-                    intent.putExtra(MAIN_RESPONSE,1);
-                    setResult(RESULT_OK,intent);
-                    startActivity(intent);
-                }
-                if(position==2){
-                    Intent intent = new Intent(getApplicationContext(), PlayMusicOne.class);
-                    intent.putExtra(MAIN_RESPONSE,2);
-                    setResult(RESULT_OK,intent);
-                    startActivity(intent);
-                }
-                if(position==3){
-                    Intent intent = new Intent(getApplicationContext(), PlayMusicOne.class);
-                    intent.putExtra(MAIN_RESPONSE,3);
-                    setResult(RESULT_OK,intent);
-                    startActivity(intent);
-                }
             }
         });
 

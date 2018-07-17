@@ -37,7 +37,7 @@ public class PlayMusicOne extends Activity  {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play1);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Response from MainActivity
         int extras = getIntent().getIntExtra(MainActivity.MAIN_RESPONSE,-1);
@@ -72,6 +72,33 @@ public class PlayMusicOne extends Activity  {
         }
 
         if(extras==3){
+            resources = getResources();
+            backgroudImage = resources.getIdentifier("mountain_background","drawable",this.getPackageName());
+            musicFileIntro = resources.getIdentifier("water","raw",this.getPackageName());
+            musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
+
+            MainActivity mainActivity = new MainActivity();
+            mainTitleText = mainActivity.getMusicTypeItem(extras);
+        }
+        if(extras==4){
+            resources = getResources();
+            backgroudImage = resources.getIdentifier("mountain_background","drawable",this.getPackageName());
+            musicFileIntro = resources.getIdentifier("water","raw",this.getPackageName());
+            musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
+
+            MainActivity mainActivity = new MainActivity();
+            mainTitleText = mainActivity.getMusicTypeItem(extras);
+        }
+        if(extras==5){
+            resources = getResources();
+            backgroudImage = resources.getIdentifier("mountain_background","drawable",this.getPackageName());
+            musicFileIntro = resources.getIdentifier("water","raw",this.getPackageName());
+            musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
+
+            MainActivity mainActivity = new MainActivity();
+            mainTitleText = mainActivity.getMusicTypeItem(extras);
+        }
+        if(extras==6){
             resources = getResources();
             backgroudImage = resources.getIdentifier("mountain_background","drawable",this.getPackageName());
             musicFileIntro = resources.getIdentifier("water","raw",this.getPackageName());

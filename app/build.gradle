@@ -18,6 +18,8 @@ android {
     }
 }
 
+repositories { mavenCentral()}//Added for rounded corners options for ImageView
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
@@ -26,4 +28,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'com.makeramen:roundedimageview:2.3.0' //Added for rounded corners options for ImageView
 }

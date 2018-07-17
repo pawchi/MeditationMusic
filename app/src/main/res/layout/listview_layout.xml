@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/transparent"
-    android:padding="10dp">
+    android:padding="4dp">
 
 
     <RelativeLayout
@@ -15,14 +16,20 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
         android:background="@drawable/customshape"
-        android:padding="10dp">
+        android:padding="6dp"
+        >
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/imageView"
-            android:layout_width="85dp"
-            android:layout_height="50dp"
+            android:layout_width="75dp"
+            android:layout_height="45dp"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/monk_smal_squerel" />
+            android:src="@drawable/monk_smal_squerel"
+            android:layout_marginEnd="2dp"
+            app:riv_corner_radius="15dp"
+            app:riv_border_width="1dp"
+            app:riv_border_color="#333333"
+            />
 
         <TextView
             android:id="@+id/musictype"
@@ -32,8 +39,9 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="40dp"
             android:textColor="#333"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:textSize="22sp"
+            android:textStyle="bold"
+            />
 
 
     </RelativeLayout>
