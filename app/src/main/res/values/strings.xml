@@ -38,6 +38,9 @@
     <string name="eighty_min">80 minut</string>
     <string name="ninety_min">90 minut</string>
 
+    <!--Main Setup   -->
+    <string name="title_setup">USTAWIENIA</string>
+    <string name="score_us">Oceń nas</string>
 
 
 </resources>

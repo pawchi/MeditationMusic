@@ -12,9 +12,12 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
     ListView lst;
-    String[] musicType = {"Lake","Monk","Flower","Moon","Bird","Water","Wind"};
+    String[] musicType = {"Lake","Monk","Flower","Moon","Bird","Water","Wind","Lake","Monk","Flower","Moon","Bird","Water","Wind"};
     Integer[] image = {R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.moon_small,
+                        R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.lake_small_squere,
+                        R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.moon_small,
                         R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere};
+    String [] itemColor = {"#d7e4f5","#b3cde0","#6497b1","#708090","#006666","#008080","#66b2b2","#b2d8d8","#b3cde0","#6497b1","#005b96","#03396c","#011f4b","#b3cde0"};
     String musicTypeItem;
     public static final String MAIN_RESPONSE = "main_response";
 
@@ -24,7 +27,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         lst = (ListView) findViewById(R.id.listview);
-        CustomListView customListView=new CustomListView(this,musicType,image);
+        CustomListView customListView=new CustomListView(this,musicType,image,itemColor);
         lst.setAdapter(customListView);
 
         lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -43,7 +46,8 @@ public class MainActivity extends Activity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(MainActivity.this,Popup_test.class));
+                Intent intent = new Intent(getApplicationContext(),ActivityMainSetup.class);
+                startActivity(intent);
             }
         });
     }

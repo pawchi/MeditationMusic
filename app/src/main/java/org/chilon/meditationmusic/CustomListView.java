@@ -18,15 +18,15 @@ import org.jetbrains.annotations.Nullable;
 public class CustomListView extends ArrayAdapter<String> {
 
     private String[] musicType;
-    //private String[] musicDescription;
+    private String[] itemColor;
     private Integer[] image;
     private Activity context;
 
 
-    public CustomListView(Activity context,String[] musicType, Integer[] image) {
+    public CustomListView(Activity context,String[] musicType, Integer[] image,String[] itemColor) {
         super(context,R.layout.listview_layout,musicType);
         this.musicType = musicType;
-        //this.musicDescription = musicDescription;
+        this.itemColor = itemColor;
         this.image = image;
         this.context = context;
     }
@@ -53,29 +53,7 @@ public class CustomListView extends ArrayAdapter<String> {
         viewHolder.tx1.setText(musicType[position]);
 
         //Set different colors for each ListView position
-        if(position==0){
-            viewHolder.gd.setColor(Color.parseColor("#c1d0c3"));
-        }
-        if(position==1){
-            viewHolder.gd.setColor(Color.parseColor("#97d3d3"));
-        }
-        if(position==2){
-            viewHolder.gd.setColor(Color.parseColor("#84b8b2"));
-        }
-        if(position==3){
-            viewHolder.gd.setColor(Color.parseColor("#64a59e"));
-        }
-        if(position==4){
-            viewHolder.gd.setColor(Color.parseColor("#3c6f8b"));
-        }
-        if(position==5){
-            viewHolder.gd.setColor(Color.parseColor("#2f7399"));
-        }
-        if(position==6){
-            viewHolder.gd.setColor(Color.parseColor("#2c4c7e"));
-        }
-
-
+        viewHolder.gd.setColor(Color.parseColor(itemColor[position]));
 
         return r;
     }
