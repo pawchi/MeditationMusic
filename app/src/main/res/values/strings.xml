@@ -8,8 +8,30 @@
     <string name="stop">stop</string>
     <string name="title_id">MUZYKA MEDYTACYJNA</string>
 
-    <!--Titles of each ListView   -->
-    <string name="listView_1">Jezioro</string>
+    <!--Titles of each ListView
+    <string name="item1">Lake</string>
+    <string name="item2">Monk</string>
+
+    <string-array name="text_listView">
+
+    <item>@string/item1</item>
+        <item>@string/item2</item>
+        <item>@string/item1</item>
+        <item>@string/item2</item>
+        <item>@string/item1</item>
+        <item>@string/item2</item>
+        <item>@string/item1</item>
+        <item>@string/item2</item>
+        <item>@string/item1</item>
+        <item>@string/item2</item>
+        <item>@string/item1</item>
+        <item>@string/item2</item>
+        <item>@string/item1</item>
+        <item>@string/item1</item>
+
+
+</string-array>
+-->
 
     <!--Popup for timer   -->
     <string name="popup_text_id">CZAS TIMERA: </string>
@@ -41,8 +63,12 @@
 
     <!--Main Setup   -->
     <string name="title_setup">USTAWIENIA</string>
-    <string name="score_us">Oceń nas</string>
+    <string name="rate_us">Oceń nas</string>
     <string name="change_language">Zmień język</string>
+
+    <!--Main Setup   -->
+    <string name="rate_us_button">Oceń aplikację</string>
+
 
 
 </resources>

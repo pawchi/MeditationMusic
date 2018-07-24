@@ -27,7 +27,8 @@
         <activity
             android:name=".PopSetupWindow"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".ActivityMainSetup"></activity>
+        <activity android:name=".ActivityMainSetup" />
+        <activity android:name=".Activity_rate_us"></activity>
     </application>
 
 </manifest>

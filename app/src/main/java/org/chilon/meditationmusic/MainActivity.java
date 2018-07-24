@@ -14,6 +14,7 @@ import android.widget.ListView;
 public class MainActivity extends Activity {
     ListView lst;
     String[] musicType = {"Lake","Monk","Flower","Moon","Bird","Water","Wind","Lake","Monk","Flower","Moon","Bird","Water","Wind"};
+    //String[] musicType;
     Integer[] image = {R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.moon_small,
                         R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.lake_small_squere,
                         R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.moon_small,
@@ -26,6 +27,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //musicType=getResources().getStringArray(R.array.text_listView);
 
         lst = (ListView) findViewById(R.id.listview);
         CustomListView customListView=new CustomListView(this,musicType,image,itemColor);

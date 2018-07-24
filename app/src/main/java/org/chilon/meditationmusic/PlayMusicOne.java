@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.Locale;
 
 public class PlayMusicOne extends Activity  {
@@ -45,8 +46,8 @@ public class PlayMusicOne extends Activity  {
         if(extras==0){
             resources = getResources();
             backgroudImage = resources.getIdentifier("background_play","drawable",this.getPackageName());
-            musicFileIntro = resources.getIdentifier("water","raw",this.getPackageName());
-            musicFileMain = resources.getIdentifier("water","raw",this.getPackageName());
+            musicFileIntro = resources.getIdentifier("kalimba_test_hq","raw",this.getPackageName());
+            musicFileMain = resources.getIdentifier("kalimba_test_hq","raw",this.getPackageName());
 
             MainActivity mainActivity = new MainActivity();
             mainTitleText = mainActivity.getMusicTypeItem(extras);
@@ -189,7 +190,7 @@ public class PlayMusicOne extends Activity  {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //mdx.stop();
+        mdx.stop();
     }
 
     @Override
@@ -210,8 +211,15 @@ public class PlayMusicOne extends Activity  {
 
             @Override
             public void onFinish() {
+                try {
+                    mdx.stop();
+                    mdx.release();
+                    mdx.reset();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 timerRunning = false;
-                mdx.stop();
+                stopButton.setBackgroundResource(android.R.drawable.ic_media_play);
                 timerButton.setBackgroundResource(android.R.drawable.ic_menu_recent_history);
                 timerButton.setText("");
 
