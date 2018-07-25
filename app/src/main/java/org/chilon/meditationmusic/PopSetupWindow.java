@@ -54,7 +54,7 @@ public class PopSetupWindow extends Activity {
             @Override
             public void onClick(View v) {
                 if(sumOfRadioButtons!=0){
-                    prepareResponse();
+                    prepareResponse1();
                 }
                 finish();
             }
@@ -62,6 +62,7 @@ public class PopSetupWindow extends Activity {
         timerCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                prepareResponse2();
                 finish();
             }
         });
@@ -101,9 +102,15 @@ public class PopSetupWindow extends Activity {
         return timerTime2;
     }
 
-    private void prepareResponse(){
+    private void prepareResponse1(){
         Intent resultIntent = new Intent();
         resultIntent.putExtra(RESPONSE,sumOfRadioButtons);
+        setResult(RESULT_OK,resultIntent);
+    }
+
+    private void prepareResponse2(){
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra(RESPONSE,9999);
         setResult(RESULT_OK,resultIntent);
     }
 }

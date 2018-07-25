@@ -69,6 +69,61 @@
     <!--Main Setup   -->
     <string name="rate_us_button">Oceń aplikację</string>
 
+    <!--CYTATY Main activity   -->
+    <!--de Mello-->
+    <string name="quot_1">\"Jeśli nie jesteś szczęśliwy, to oznacza tylko tyle, że koncentrujesz się na tym, czego nie masz. W przeciwnym razie musiałbyś doświadczać błogostanu.\"</string>
+    <string name="quot_2">\"Widzimy ludzi i rzeczy nie takimi, jakimi są, ale takimi, jakimi my jesteśmy.\"</string>
+    <string name="quot_3">\"Z przeszłością należy się rozstać nie dlatego, że była zła, lecz dlatego, że jest martwa.\"</string>
+    <string name="quot_4">\"Szczęście jest motylem: próbuj je złapać, a odleci. Usiądź w spokoju, a ono spocznie na twoim ramieniu.\"</string>
+    <string name="quot_5">\"Jedna, jedyna przyczyna nieszczęścia: przywiązanie. Emocjonalny stan kurczowego przywiązania wynikający z przekonania, że bez pewnych rzeczy nie możesz być szczęśliwy.\"</string>
+    <string name="quot_6">\"To nie świat i ludzie wokół Ciebie czynią cię szczęśliwym lub nieszczęśliwym, ale Twoje myśli.\"</string>
+    <string name="quot_7">\"Któregoś dnia zrozumiesz, że szukasz tego, co już posiadasz.\"</string>
+    <string name="quot_8">\"Jakim szaleństwem jest oczekiwanie, by inny człowiek żył zgodnie ze standardami i normami, które zostały zaprogramowane w Tobie przez Twoje środowisko i Twoją rodzinę!\"</string>
+    <string name="quot_9">\"Nalepianie etykietek to akt umysłowego lenistwa, łatwo jest bowiem komuś przyczepić etykietkę. Trudne to i wymagające, by zobaczyć konkretną osobę w jej niepowtarzalności.\"</string>
+    <string name="quot_10">\"Dobrze jest oddać się takiemu działaniu, w które możesz zaangażować się całym sobą; działaniu, które samo w sobie przynosi ci tyle radości, że sukces, uznanie czy aprobata po prostu nie mają żadnego znaczenia.\"</string>
+    <string name="quot_11">\"Ci, którzy wciąż zastanawiają się, zanim uczynią jeden krok, spędzą życie stojąc na jednej nodze.\"</string>
+    <string name="quot_12">\"Jeśli dojdziesz do wniosku, że dziś nie jesteś tak mądry, jak ci się to wczoraj zdawało, to znaczy, że dzisiaj jesteś mądrzejszy.\"</string>
+    <string name="quot_13">\"Każda rzecz jest dobra lub zła w zależności od tego, co o niej myślimy.\"</string>
+    <string name="quot_14">\"Dano ci skosztować narkotyku, który nazywa się Aprobata, Uznanie, Uwaga, narkotyku który nazywa się Sukces, Prestiż, Władza. Skosztowawszy ich , stałeś się uzależnionym narkomanem i zacząłeś się strasznie bać, by tego nie utracić.\"</string>
+    <string name="quot_15">\"Natura deszczu jest zawsze taka sama, pozwala rosnąć zarówno cierniom na bagnach, jak i kwiatom w ogrodach.\"</string>
+    <string name="quot_16">\"Dzieci są zwierciadłami. Kiedy znajdują się w obecności miłości, to ją odbijają. Kiedy miłości nie ma, nie mają czego odbijać.\"</string>
+    <string name="quot_17">\"Prawda nie jest czymś, czego się szuka, ona jest.\"</string>
+    <string name="quot_18">\"Dla mędrca koniec egzystencji gąsienicy oznacza narodziny motyla.\"</string>
+    <!--Eckhart Tolle -->
+    <string name="quot_19">\"Nic nigdy nie zdarzyło się w przeszłości; wszystko zdarzyło się Teraz. Nic nigdy nie zdarzy się w przyszłości.Wszystko zdarzać się będzie Teraz.\"</string>
+    <string name="quot_20">\"Kiedy wyzbywasz się nawyku uciekania przed Teraźniejszością, radość Istnienia przenika wszystko, co robisz.\"</string>
+    <string name="quot_21">\"Mieszkałem z wieloma mistrzami Zen. Wszyscy byli kotami.\"</string>
+    <string name="quot_22">\"Kiedy kierujesz więcej uwagi na to co robisz, niż na wynik, który chcesz osiągnąć, przełamujesz stary wzorzec ego. To co robisz, staje się wtedy nie tylko o wiele bardziej efektywne, ale daje ci nieporównanie więcej spełnienia i radości.\"</string>
+    <string name="quot_23">\"Nie móc przestać myśleć to straszliwa przypadłość, nie zdajemy sobie jednak z niej sprawy, bo prawie wszyscy na nią cierpią, więc uchodzi ona za stan normalny.\"</string>
+    <string name="quot_24">\"Kiedy powiesz "tak" temu, co życie przynosi, kiedy zaakceptujesz tę chwilę taką, jaka jest, poczujesz w sobie rodzaj przestrzeni, gdzie panuje głęboki spokój.\"</string>
+    <string name="quot_25">\"Przeszłość nie dała ci spełnienia. Nie znajdziesz go też w przyszłości.Jedynym miejscem w którym odnajdziesz siebie jest chwila obecna.\"</string>
+    <string name="quot_26">\"Nie jesteś odrębny od całości.Jesteś jednością ze słońcem, ziemią, powietrzem. Nie masz życia. Ty jesteś życiem.\"</string>
+    <string name="quot_27">\"Możesz mieć wiele ekscytujących doświadczeń dostępnych za pieniądze, ale one pojawią się i znikną, pozostawiając ci zawsze pustkę i pragnienie dalszych przyjemności.\"</string>
+    <string name="quot_28">\"Moc w kreowaniu lepszej przyszłości, jest zawarta w chwili obecnej: Pozytywną przyszłość kreujesz poprzez tworzenie pozytywnej teraźniejszości.\"</string>
+    <!--Phil Bosmans-->
+    <string name="quot_29">\"Najpiękniejszych chwil w życiu nie zaplanujesz. One przyjdą same.\"</string>
+    <!--Howard Thurman -->
+    <string name="quot_30">\"Nie pytaj, czego potrzebuje świat. Zapytaj co sprawia, że czujesz że żyjesz i rób to. Ponieważ tym czego potrzebuje świat, są ludzie którzy czują że żyją.\"</string>
+    <!--Brian Tracy​ -->
+    <string name="quot_31">\"Ludzie sukcesu zawsze szukają możliwości jak pomoc innym. Pozostali pytają: co z tego będę miał.\"</string>
+    <!--Rumi-->
+    <string name="quot_32">\"Wczoraj byłem sprytny, więc chciałem zmienić świat. Dzisiaj jestem mądry, więc zmieniam siebie\"</string>
+    <!--Osho-->
+    <string name="quot_33">\"Weź życie w swoje ręce - w końcu jest ono twoje. Nie jesteś tu, aby spełniać oczekiwania innych. Nie żyj życiem swojej matki, nie żyj życiem swojego ojca, żyj po swojemu.\"</string>
+    <string name="quot_34">\"Aby dojść do właściwych drzwi, trzeba wpierw zapukać do wielu niewłaściwych. Jeśli przez przypadek od razu dobrze trafisz, nie będziesz umiał rozpoznać, że są to te właściwe drzwi.\"</string>
+    <string name="quot_35">\"Chcę popełniać błędy, chcę się mylić, ponieważ to jedyny sposób, żeby się czegoś nauczyć.\"</string>
+    <string name="quot_36">\"W miłości człowiek się rozwija, w strachu - kurczy. W strachu człowiek zamyka się, w miłości - otwiera. W strachu człowiek wątpi, w miłości - ufa.\"</string>
+    <string name="quot_37">\"Wczoraj nie znałaś tego mężczyzny, tej kobiety. Byliście sobie obcy. Dziś jesteście przyjaciółmi. Kto wie, co zdarzy się jutro? Jutro możecie znów stać się sobie obcy.\"</string>
+
+    <!--Unknown author-->
+    <string name="quot_38">\"Pamiętaj: cel nie jest celem. Droga do celu to wszystko co mamy.\"</string>
+    <!--Buddha-->
+    <string name="quot_39">\"To czym jesteśmy jest rezultatem tego o czym myśleliśmy w przeszłości. Umysł jest wszystkim. To co myślimy - tym się stajemy.\"</string>
+    <!--Mooji-->
+    <string name="quot_40">\"Jeśli chcesz rozbawić Boga - powiedz mu o swoich planach.\"</string>
+
+
+
 
 
 </resources>

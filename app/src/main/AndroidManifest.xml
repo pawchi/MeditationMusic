@@ -16,6 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".PlayMusicOne"
             android:label="@string/title_activity_play_music"
@@ -24,9 +25,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.chilon.meditationmusic.MainActivity" />
         </activity>
+
         <activity
             android:name=".PopSetupWindow"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.CustomTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.chilon.meditationmusic.PlayMusicOne" />
+
+    </activity>
+
         <activity android:name=".ActivityMainSetup" />
         <activity android:name=".Activity_rate_us"></activity>
     </application>

@@ -1,17 +1,17 @@
 package org.chilon.meditationmusic;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.app.Activity;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.Locale;
 
 public class PlayMusicOne extends Activity  {
@@ -31,85 +31,38 @@ public class PlayMusicOne extends Activity  {
     int musicFileMain;
     String mainTitleText;
     Resources resources;
+    Integer [] images = {R.drawable.background_play,R.drawable.monk_background,R.drawable.mountain_background,
+                         R.drawable.background_play,R.drawable.monk_background,R.drawable.mountain_background};
+    Integer [] musics_intro = {R.raw.kalimba_test_hq,R.raw.intro,R.raw.kalimba_test_hq,R.raw.intro,R.raw.kalimba_test_hq,R.raw.intro};
+    Integer [] musics_main = {R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka,R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka};
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+
+        //******
+        /*
+        int diff;
+        if(savedInstanceState==null){
+            diff = getIntent().getIntExtra(DEFAULT_KEYS_DIALER,N)
+        }*/
+
+        //******
+
+
+
         setContentView(R.layout.activity_play1);
         //getActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Response from MainActivity
         int extras = getIntent().getIntExtra(MainActivity.MAIN_RESPONSE,-1);
-        if(extras==0){
-            resources = getResources();
-            backgroudImage = resources.getIdentifier("background_play","drawable",this.getPackageName());
-            musicFileIntro = resources.getIdentifier("kalimba_test_hq","raw",this.getPackageName());
-            musicFileMain = resources.getIdentifier("kalimba_test_hq","raw",this.getPackageName());
-
-            MainActivity mainActivity = new MainActivity();
-            mainTitleText = mainActivity.getMusicTypeItem(extras);
-        }
-
-        if(extras==1){
-            resources = getResources();
-            backgroudImage = resources.getIdentifier("monk_background","drawable",this.getPackageName());
-            musicFileIntro = resources.getIdentifier("intro","raw",this.getPackageName());
-            musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
-
-            MainActivity mainActivity = new MainActivity();
-            mainTitleText = mainActivity.getMusicTypeItem(extras);
-        }
-
-        if(extras==2){
-            resources = getResources();
-            backgroudImage = resources.getIdentifier("monk_background","drawable",this.getPackageName());
-            musicFileIntro = resources.getIdentifier("intro","raw",this.getPackageName());
-            musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
-
-            MainActivity mainActivity = new MainActivity();
-            mainTitleText = mainActivity.getMusicTypeItem(extras);
-        }
-
-        if(extras==3){
-            resources = getResources();
-            backgroudImage = resources.getIdentifier("mountain_background","drawable",this.getPackageName());
-            musicFileIntro = resources.getIdentifier("water","raw",this.getPackageName());
-            musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
-
-            MainActivity mainActivity = new MainActivity();
-            mainTitleText = mainActivity.getMusicTypeItem(extras);
-        }
-        if(extras==4){
-            resources = getResources();
-            backgroudImage = resources.getIdentifier("mountain_background","drawable",this.getPackageName());
-            musicFileIntro = resources.getIdentifier("water","raw",this.getPackageName());
-            musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
-
-            MainActivity mainActivity = new MainActivity();
-            mainTitleText = mainActivity.getMusicTypeItem(extras);
-        }
-        if(extras==5){
-            resources = getResources();
-            backgroudImage = resources.getIdentifier("mountain_background","drawable",this.getPackageName());
-            musicFileIntro = resources.getIdentifier("water","raw",this.getPackageName());
-            musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
-
-            MainActivity mainActivity = new MainActivity();
-            mainTitleText = mainActivity.getMusicTypeItem(extras);
-        }
-        if(extras==6){
-            resources = getResources();
-            backgroudImage = resources.getIdentifier("mountain_background","drawable",this.getPackageName());
-            musicFileIntro = resources.getIdentifier("water","raw",this.getPackageName());
-            musicFileMain = resources.getIdentifier("pani_lansienka","raw",this.getPackageName());
-
-            MainActivity mainActivity = new MainActivity();
-            mainTitleText = mainActivity.getMusicTypeItem(extras);
-        }
-
+        MainActivity mainActivity = new MainActivity();
+        mainTitleText = mainActivity.getMusicTypeItem(extras);
+        backgroudImage = images[extras];
+        musicFileIntro = musics_intro[extras];
+        musicFileMain = musics_main[extras];
 
 
         background = (ConstraintLayout) findViewById(R.id.constraintid);
@@ -172,6 +125,7 @@ public class PlayMusicOne extends Activity  {
         super.onActivityResult(requestCode, resultCode, data);
         if(POP_SETUP_WINDOW_CODE==requestCode){
             int popSetupResponse = data.getIntExtra(PopSetupWindow.RESPONSE,-1);
+            if(popSetupResponse!=9999)
             insertResponse(popSetupResponse);
         }
     }
@@ -181,8 +135,6 @@ public class PlayMusicOne extends Activity  {
             timeLeftInMillis = response*60*1000;
             startTimer();
             mdx.start();
-            //String res = String.valueOf(response);
-            //viewLeftTime.setText(res);
         }
     }
 

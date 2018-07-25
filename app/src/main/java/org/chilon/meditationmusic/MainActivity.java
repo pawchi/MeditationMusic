@@ -10,6 +10,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.Random;
 
 public class MainActivity extends Activity {
     ListView lst;
@@ -22,6 +25,10 @@ public class MainActivity extends Activity {
     String [] itemColor = {"#d7e4f5","#b3cde0","#6497b1","#708090","#006666","#008080","#66b2b2","#b2d8d8","#b3cde0","#6497b1","#005b96","#03396c","#011f4b","#b3cde0"};
     String musicTypeItem;
     public static final String MAIN_RESPONSE = "main_response";
+    Integer [] quotation = {R.string.quot_1,R.string.quot_2,R.string.quot_3,R.string.quot_4,R.string.quot_5,R.string.quot_6,R.string.quot_7,R.string.quot_8,R.string.quot_9,
+            R.string.quot_10,R.string.quot_11,R.string.quot_12,R.string.quot_13,R.string.quot_14,R.string.quot_15,R.string.quot_16,R.string.quot_17,R.string.quot_18,
+            R.string.quot_19,R.string.quot_20};
+    TextView quotSentence;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,11 @@ public class MainActivity extends Activity {
         lst = (ListView) findViewById(R.id.listview);
         CustomListView customListView=new CustomListView(this,musicType,image,itemColor);
         lst.setAdapter(customListView);
+
+        quotSentence = (TextView) findViewById(R.id.wise_sentence);
+        Random random = new Random();
+        int rnd = random.nextInt(20);
+        quotSentence.setText(quotation[rnd]);
 
         lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
