@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.Locale;
 
 public class PlayMusicOne extends Activity  {
@@ -19,10 +20,11 @@ public class PlayMusicOne extends Activity  {
     private Button stopButton;
     private Button timerButton;
     private MediaPlayer mdx;
+    PerfectLoopMediaPlayer plmdx;
     private TextView mainTitle;
     TextView viewLeftTime;
     private static final int POP_SETUP_WINDOW_CODE = 1;
-    private CountDownTimer countDownTimer;
+    private CountDownTimer countDownTimer = null;
     private boolean timerRunning;
     private long timeLeftInMillis = 0; //Setup this value by click OK in popup timer
     ConstraintLayout background;
@@ -79,7 +81,8 @@ public class PlayMusicOne extends Activity  {
         stopButton = (Button) findViewById(R.id.stopid);
         stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
 
-        //play intro
+        //play intro ************************************************
+        /*
         mdx= MediaPlayer.create(PlayMusicOne.this, musicFileIntro);
         mdx.start();
         //play when intro finished
@@ -106,6 +109,25 @@ public class PlayMusicOne extends Activity  {
                 }
             }
         });
+        */
+        //*******************************************************************
+        plmdx = PerfectLoopMediaPlayer.create(PlayMusicOne.this, musicFileIntro);
+        plmdx.start();
+
+        //Button Play/Pause
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (plmdx.isPlaying()) {
+                    stopButton.setBackgroundResource(android.R.drawable.ic_media_play);
+                    plmdx.pause();
+                } else {
+                    stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
+                    plmdx.start();
+                }
+            }
+        });
+        //*************************************************************************
 
         //Button Timer
         timerButton.setOnClickListener(new View.OnClickListener() {
@@ -132,9 +154,12 @@ public class PlayMusicOne extends Activity  {
 
     private void insertResponse(int response){
         if(response!=0) {
-            timeLeftInMillis = response*60*1000;
+            //In minutes should be: timeLeftInMillis = response*60*1000;
+            timeLeftInMillis = response*6*1000;
             startTimer();
-            mdx.start();
+             plmdx.start();
+             stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
+
         }
     }
 
@@ -142,7 +167,7 @@ public class PlayMusicOne extends Activity  {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mdx.stop();
+        plmdx.stop();
     }
 
     @Override
@@ -153,20 +178,20 @@ public class PlayMusicOne extends Activity  {
 
     //Timer
     private void startTimer(){
+
         countDownTimer = new CountDownTimer(timeLeftInMillis,1000) {
-            @Override
+
             public void onTick(long millisUntilFinished) {
                 timeLeftInMillis=millisUntilFinished;
                 updateCountDowntText();
                 timerButton.setBackgroundResource(android.R.drawable.toast_frame);
             }
 
-            @Override
             public void onFinish() {
                 try {
-                    mdx.stop();
-                    mdx.release();
-                    mdx.reset();
+                    plmdx.stop();
+                    plmdx.prepare();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
