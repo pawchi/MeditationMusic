@@ -19,8 +19,10 @@ public class PlayMusicOne extends Activity  {
 
     private Button stopButton;
     private Button timerButton;
+    private Button gongButton;
     private MediaPlayer mdx;
     PerfectLoopMediaPlayer plmdx;
+    PerfectLoopMediaPlayer plmdx2;
     private TextView mainTitle;
     TextView viewLeftTime;
     private static final int POP_SETUP_WINDOW_CODE = 1;
@@ -81,6 +83,8 @@ public class PlayMusicOne extends Activity  {
         stopButton = (Button) findViewById(R.id.stopid);
         stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
 
+        gongButton = (Button) findViewById(R.id.gong_button);
+
         //play intro ************************************************
         /*
         mdx= MediaPlayer.create(PlayMusicOne.this, musicFileIntro);
@@ -137,6 +141,16 @@ public class PlayMusicOne extends Activity  {
                 Intent intent = new Intent(getApplicationContext(),PopSetupWindow.class);
                 startActivityForResult(intent,1);
 
+            }
+        });
+
+        //Gong button
+
+        gongButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Popsetup_gong.class);
+                startActivityForResult(intent,1);
             }
         });
     }

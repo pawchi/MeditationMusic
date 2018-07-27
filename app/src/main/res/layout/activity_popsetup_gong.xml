@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/constraint_lay_gong"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal|center_vertical"
+    android:background="@drawable/timer_border"
+    tools:context=".Popsetup_gong">
+
+
+    <LinearLayout
+        android:id="@+id/lin_lay_gong_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/gong_text_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/gong_message_start"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/gong_text_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/gong_time"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/gong_text_id"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_lay_rb_message_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lin_lay_gong_score">
+
+        <TextView
+            android:id="@+id/rb_text_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gong_message_end"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="64dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_lay_gong_radios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/lin_lay_ok_cancel_gong"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/constraint_lay_gong"
+        app:layout_constraintRight_toRightOf="@+id/constraint_lay_gong"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lin_lay_rb_message_end">
+
+        <RadioGroup
+            android:id="@+id/gong_radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fadingEdge="none|vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/popup_text_id">
+
+
+            <RadioButton
+                android:id="@+id/gong_rb1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="rbGongOnClick"
+                android:text="@string/gong_5" />
+
+            <RadioButton
+                android:id="@+id/gong_rb2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="rbGongOnClick"
+                android:text="@string/gong_10" />
+
+            <RadioButton
+                android:id="@+id/gong_rb3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="rbGongOnClick"
+                android:text="@string/gong_15" />
+
+            <RadioButton
+                android:id="@+id/gong_rb4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="rbGongOnClick"
+                android:text="@string/gong_20" />
+
+            <RadioButton
+                android:id="@+id/gong_rb5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="rbGongOnClick"
+                android:text="@string/gong_25" />
+
+            <RadioButton
+                android:id="@+id/gong_rb6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="rbGongOnClick"
+                android:text="@string/gong_30" />
+
+            <RadioButton
+                android:id="@+id/gong_rb7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="rbGongOnClick"
+                android:text="@string/gong_45" />
+
+            <RadioButton
+                android:id="@+id/gong_rb8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="rbGongOnClick"
+                android:text="@string/gong_60" />
+
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_lay_ok_cancel_gong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/button_timer_ok"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:background="@android:color/holo_blue_dark"
+            android:text="@string/button_timer_ok"
+            app:layout_constraintLeft_toLeftOf="@+id/popup"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_popup1" />
+
+        <Button
+            android:id="@+id/button_timer_cancel"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:background="@android:color/holo_blue_dark"
+            android:text="@string/button_timer_cancel"
+            app:layout_constraintRight_toRightOf="@+id/popup"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_popup1" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -123,7 +123,18 @@
     <string name="quot_40">\"Jeśli chcesz rozbawić Boga - powiedz mu o swoich planach.\"</string>
 
 
+    <!--Popup up Gong   -->
 
-
+    <string name="gong_message_start">Gong zabrzmi</string>
+    <string name="gong_time">0</string>
+    <string name="gong_message_end">sekund przed końcem timera.</string>
+    <string name="gong_5">5 sekund przed końcem</string>
+    <string name="gong_10">10 sekund przed końcem</string>
+    <string name="gong_15">15 sekund przed końcem</string>
+    <string name="gong_20">20 sekund przed końcem</string>
+    <string name="gong_25">25 sekund przed końcem</string>
+    <string name="gong_30">30 sekund przed końcem</string>
+    <string name="gong_45">45 sekund przed końcem</string>
+    <string name="gong_60">60 sekund przed końcem</string>
 
 </resources>
