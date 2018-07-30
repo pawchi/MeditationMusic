@@ -9,15 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".PlayMusicOne"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_play_music"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -25,14 +29,16 @@
                 android:value="org.chilon.meditationmusic.MainActivity" />
         </activity>
         <activity
-            android:name=".PopSetupWindow"
+            android:name=".PopUpWindowTimer"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.CustomTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.chilon.meditationmusic.PlayMusicOne" />
         </activity>
-        <activity android:name=".ActivityMainSetup" />
-        <activity android:name=".Activity_rate_us" />
+        <activity
+            android:name=".ActivityMainSetup"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Popsetup_gong"></activity>
     </application>
 

@@ -7,12 +7,10 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.Locale;
 
 public class PlayMusicOne extends Activity  {
@@ -138,7 +136,7 @@ public class PlayMusicOne extends Activity  {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(),PopSetupWindow.class);
+                Intent intent = new Intent(getApplicationContext(),PopUpWindowTimer.class);
                 startActivityForResult(intent,1);
 
             }
@@ -155,12 +153,12 @@ public class PlayMusicOne extends Activity  {
         });
     }
 
-    //Response from PopSetupWindow and MainActivity
+    //Response from PopUpWindowTimer and MainActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(POP_SETUP_WINDOW_CODE==requestCode){
-            int popSetupResponse = data.getIntExtra(PopSetupWindow.RESPONSE,-1);
+            int popSetupResponse = data.getIntExtra(PopUpWindowTimer.RESPONSE,-1);
             if(popSetupResponse!=9999)
             insertResponse(popSetupResponse);
         }
