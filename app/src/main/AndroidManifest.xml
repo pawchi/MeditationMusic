@@ -28,6 +28,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.chilon.meditationmusic.MainActivity" />
         </activity>
+
         <activity
             android:name=".PopUpWindowTimer"
             android:screenOrientation="portrait"
@@ -36,10 +37,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.chilon.meditationmusic.PlayMusicOne" />
         </activity>
+
         <activity
             android:name=".ActivityMainSetup"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Popsetup_gong"></activity>
-    </application>
+        <activity android:name=".Popsetup_gong"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.CustomTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.chilon.meditationmusic.PlayMusicOne" />
+        </activity>
 
+    </application>
 </manifest>

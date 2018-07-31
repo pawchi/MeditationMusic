@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.Locale;
 
 public class PlayMusicOne extends Activity  {
@@ -83,38 +84,9 @@ public class PlayMusicOne extends Activity  {
 
         gongButton = (Button) findViewById(R.id.gong_button);
 
-        //play intro ************************************************
-        /*
-        mdx= MediaPlayer.create(PlayMusicOne.this, musicFileIntro);
-        mdx.start();
-        //play when intro finished
-        mdx.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                mdx = MediaPlayer.create(PlayMusicOne.this, musicFileMain);
-                mdx.start();
-                mdx.setLooping(true);
-            }
-        });
-
-
-        //Button Play/Pause
-        stopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mdx.isPlaying()) {
-                    stopButton.setBackgroundResource(android.R.drawable.ic_media_play);
-                    mdx.pause();
-                } else {
-                    stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
-                    mdx.start();
-                }
-            }
-        });
-        */
-        //*******************************************************************
         plmdx = PerfectLoopMediaPlayer.create(PlayMusicOne.this, musicFileIntro);
-        plmdx.start();
+        plmdx.prepare();
+        //plmdx.start();
 
         //Button Play/Pause
         stopButton.setOnClickListener(new View.OnClickListener() {
@@ -129,9 +101,7 @@ public class PlayMusicOne extends Activity  {
                 }
             }
         });
-        //*************************************************************************
 
-        //Button Timer
         timerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,13 +112,11 @@ public class PlayMusicOne extends Activity  {
             }
         });
 
-        //Gong button
-
         gongButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Popsetup_gong.class);
-                startActivityForResult(intent,1);
+                startActivityForResult(intent,2);
             }
         });
     }
@@ -157,11 +125,20 @@ public class PlayMusicOne extends Activity  {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        //result Timer
         if(POP_SETUP_WINDOW_CODE==requestCode){
             int popSetupResponse = data.getIntExtra(PopUpWindowTimer.RESPONSE,-1);
             if(popSetupResponse!=9999)
             insertResponse(popSetupResponse);
         }
+
+        //result Gong
+        if(requestCode==2){
+            int gongTimeResponse = data.getIntExtra("key",-1);
+            insertGongResponse(gongTimeResponse);
+        }
+
     }
 
     private void insertResponse(int response){
@@ -225,4 +202,11 @@ public class PlayMusicOne extends Activity  {
         timerButton.setText(timeLeftFormatted);
         //timerButton.setBackgroundColor(Color.parseColor("#FFFFFFFF"));
     }
+
+    private void insertGongResponse(int gongResponse){
+        gongButton.setText(gongResponse);
+    }
+
+
+
 }

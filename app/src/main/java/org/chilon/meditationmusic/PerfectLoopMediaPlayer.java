@@ -155,10 +155,20 @@ public class PerfectLoopMediaPlayer {
     //by me wroted methods*****************************************
 
 
+    public void  prepare(){
+        mCurrentPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.start();
+            }
+        });
 
+    }
+    /*
     public void prepare() throws IllegalStateException, IOException {
         mCurrentPlayer.prepare();
     }
+    */
     //*************************************************************
 
     public void start() throws IllegalStateException {

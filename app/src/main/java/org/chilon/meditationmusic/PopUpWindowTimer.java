@@ -32,6 +32,8 @@ public class PopUpWindowTimer extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.popup_timer);
+        this.setFinishOnTouchOutside(false);
+
         rgMinutes=(RadioGroup) findViewById(R.id.radioGroup);
         rgMinTenth=(RadioGroup) findViewById(R.id.radioGroup2);
         timerOk=(Button) findViewById(R.id.button_timer_ok);
