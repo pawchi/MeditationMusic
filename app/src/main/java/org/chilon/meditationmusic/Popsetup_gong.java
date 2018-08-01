@@ -53,6 +53,7 @@ public class Popsetup_gong extends Activity {
         gongCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                preparingDataToCancel();
                 finish();
             }
         });
@@ -75,6 +76,12 @@ public class Popsetup_gong extends Activity {
     public void preparingDataToSend(){
         Intent intent = new Intent();
         intent.putExtra("key",gongTime);
+        setResult(RESULT_OK,intent);
+    }
+
+    public void preparingDataToCancel(){
+        Intent intent = new Intent();
+        intent.putExtra("key",61);
         setResult(RESULT_OK,intent);
     }
 }

@@ -19,21 +19,22 @@ public class PlayMusicOne extends Activity  {
     private Button stopButton;
     private Button timerButton;
     private Button gongButton;
-    private MediaPlayer mdx;
     PerfectLoopMediaPlayer plmdx;
-    PerfectLoopMediaPlayer plmdx2;
+    MediaPlayer gong;
     private TextView mainTitle;
     TextView viewLeftTime;
-    private static final int POP_SETUP_WINDOW_CODE = 1;
-    private CountDownTimer countDownTimer = null;
+    private static final int TIMER_CODE = 1;
+    private static final int GONG_CODE = 2;
     private boolean timerRunning;
     private long timeLeftInMillis = 0; //Setup this value by click OK in popup timer
+    private long gongTimeLeftInMillis = 0;
+    private int gongTimeResponse = -1;
     ConstraintLayout background;
     int backgroudImage;
     int musicFileIntro;
     int musicFileMain;
     String mainTitleText;
-    Resources resources;
+    CountDownTimer countDownTimer2;
     Integer [] images = {R.drawable.background_play,R.drawable.monk_background,R.drawable.mountain_background,
                          R.drawable.background_play,R.drawable.monk_background,R.drawable.mountain_background};
     Integer [] musics_intro = {R.raw.kalimba_test_hq,R.raw.intro,R.raw.kalimba_test_hq,R.raw.intro,R.raw.kalimba_test_hq,R.raw.intro};
@@ -44,17 +45,6 @@ public class PlayMusicOne extends Activity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //******
-        /*
-        int diff;
-        if(savedInstanceState==null){
-            diff = getIntent().getIntExtra(DEFAULT_KEYS_DIALER,N)
-        }*/
-
-        //******
-
-
 
         setContentView(R.layout.activity_play1);
         //getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -87,6 +77,8 @@ public class PlayMusicOne extends Activity  {
         plmdx = PerfectLoopMediaPlayer.create(PlayMusicOne.this, musicFileIntro);
         plmdx.prepare();
         //plmdx.start();
+
+        gong = MediaPlayer.create(PlayMusicOne.this,R.raw.pani_lansienka);
 
         //Button Play/Pause
         stopButton.setOnClickListener(new View.OnClickListener() {
@@ -121,27 +113,30 @@ public class PlayMusicOne extends Activity  {
         });
     }
 
-    //Response from PopUpWindowTimer and MainActivity
+    //Response from SetUpTimer and SetUpGongTime
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         //result Timer
-        if(POP_SETUP_WINDOW_CODE==requestCode){
+        if(TIMER_CODE==requestCode){
             int popSetupResponse = data.getIntExtra(PopUpWindowTimer.RESPONSE,-1);
             if(popSetupResponse!=9999)
-            insertResponse(popSetupResponse);
+            insertTimerResponse(popSetupResponse);
         }
 
         //result Gong
-        if(requestCode==2){
-            int gongTimeResponse = data.getIntExtra("key",-1);
-            insertGongResponse(gongTimeResponse);
+        if(GONG_CODE==requestCode){
+            gongTimeResponse = data.getIntExtra("key",-1);
+            if(gongTimeResponse==61||gongTimeResponse==0){
+                insertGongResponse(61);
+            } else {
+                insertGongResponse(gongTimeResponse);
+            }
         }
-
     }
 
-    private void insertResponse(int response){
+    private void insertTimerResponse(int response){
         if(response!=0) {
             //In minutes should be: timeLeftInMillis = response*60*1000;
             timeLeftInMillis = response*6*1000;
@@ -167,8 +162,7 @@ public class PlayMusicOne extends Activity  {
 
     //Timer
     private void startTimer(){
-
-        countDownTimer = new CountDownTimer(timeLeftInMillis,1000) {
+         new CountDownTimer(timeLeftInMillis,1000) {
 
             public void onTick(long millisUntilFinished) {
                 timeLeftInMillis=millisUntilFinished;
@@ -204,9 +198,34 @@ public class PlayMusicOne extends Activity  {
     }
 
     private void insertGongResponse(int gongResponse){
-        gongButton.setText(gongResponse);
+        if(gongResponse!=61){
+            String gongTime = Integer.toString(gongResponse);
+            gongButton.setText(gongTime);
+            gongTimeLeftInMillis = timeLeftInMillis - gongResponse*1000;
+            startGongTime();
+        } else {
+            gongButton.setText("");
+        }
     }
 
+    //Gong timer
+    private void startGongTime(){
 
+        countDownTimer2 = new CountDownTimer(gongTimeLeftInMillis,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                gongTimeLeftInMillis=millisUntilFinished;
+            }
 
+            @Override
+            public void onFinish() {
+                try {
+                    gongButton.setText("fin");
+                    gong.start();
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
 }
