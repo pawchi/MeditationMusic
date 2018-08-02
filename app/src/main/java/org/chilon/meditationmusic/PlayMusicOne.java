@@ -143,6 +143,7 @@ public class PlayMusicOne extends Activity  {
             startTimer();
              plmdx.start();
              stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
+            gongButton.setVisibility(View.VISIBLE);
 
         }
     }
@@ -222,6 +223,7 @@ public class PlayMusicOne extends Activity  {
                 try {
                     gongButton.setText("fin");
                     gong.start();
+                    gongButton.setVisibility(View.INVISIBLE);
                 } catch (Exception e){
                     e.printStackTrace();
                 }

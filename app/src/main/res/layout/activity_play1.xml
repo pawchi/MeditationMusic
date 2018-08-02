@@ -82,8 +82,8 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="32dp"
         android:background="@android:color/holo_blue_dark"
-        android:text="test"
         app:layout_constraintBottom_toTopOf="@+id/timerid"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

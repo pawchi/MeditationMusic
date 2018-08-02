@@ -25,10 +25,8 @@ public class MainActivity extends Activity {
     String [] itemColor = {"#d7e4f5","#b3cde0","#6497b1","#708090","#006666","#008080","#66b2b2","#b2d8d8","#b3cde0","#6497b1","#005b96","#03396c","#011f4b","#b3cde0"};
     String musicTypeItem;
     public static final String MAIN_RESPONSE = "main_response";
-    Integer [] quotation = {R.string.quot_1,R.string.quot_2,R.string.quot_3,R.string.quot_4,R.string.quot_5,R.string.quot_6,R.string.quot_7,R.string.quot_8,R.string.quot_9,
-            R.string.quot_10,R.string.quot_11,R.string.quot_12,R.string.quot_13,R.string.quot_14,R.string.quot_15,R.string.quot_16,R.string.quot_17,R.string.quot_18,
-            R.string.quot_19,R.string.quot_20};
     TextView quotSentence;
+    TextView quotSentenceAuthor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +39,46 @@ public class MainActivity extends Activity {
         lst.setAdapter(customListView);
 
         quotSentence = (TextView) findViewById(R.id.wise_sentence);
+        quotSentenceAuthor = (TextView) findViewById(R.id.sentence_author);
+
         Random random = new Random();
-        int rnd = random.nextInt(20);
-        quotSentence.setText(quotation[rnd]);
+        int rnd = random.nextInt(40)+1;
+        String resourceAsString = "quot_"+rnd;
+        int resId = getResources().getIdentifier(resourceAsString,"string", getApplicationContext().getPackageName());
+        quotSentence.setText(resId);
+
+        if(rnd>=1&&rnd<=18){
+            quotSentenceAuthor.setText("Anthony de Mello");
+        }
+        if(rnd>=19&&rnd<=28){
+            quotSentenceAuthor.setText("Eckhart Tolle");
+        }
+        if(rnd==29){
+            quotSentenceAuthor.setText("Phil Bosmans");
+        }
+        if(rnd==30){
+            quotSentenceAuthor.setText("Howard Thurman");
+        }
+        if(rnd==31){
+            quotSentenceAuthor.setText("Brian Tracy");
+        }
+        if(rnd==32){
+            quotSentenceAuthor.setText("Rumi");
+        }
+        if(rnd>=33&&rnd<=37){
+            quotSentenceAuthor.setText("Osho");
+        }
+        if(rnd==38){
+            quotSentenceAuthor.setText("Somebody");
+        }
+        if(rnd==39){
+            quotSentenceAuthor.setText("Buddha");
+        }
+        if(rnd==40){
+            quotSentenceAuthor.setText("Moji");
+        }
+
+
 
         lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
