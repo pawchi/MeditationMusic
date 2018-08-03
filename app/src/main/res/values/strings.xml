@@ -137,4 +137,7 @@
     <string name="gong_45">45 sekund przed końcem</string>
     <string name="gong_60">60 sekund przed końcem</string>
 
+    <!--Popup up AddMusic   -->
+    <string name="add_sound">Dodaj dźwięk:</string>
+
 </resources>

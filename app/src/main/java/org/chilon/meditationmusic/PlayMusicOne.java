@@ -1,14 +1,17 @@
 package org.chilon.meditationmusic;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -19,6 +22,7 @@ public class PlayMusicOne extends Activity  {
     private Button stopButton;
     private Button timerButton;
     private Button gongButton;
+    private Button addSoundButton;
     PerfectLoopMediaPlayer plmdx;
     MediaPlayer gong;
     private TextView mainTitle;
@@ -29,6 +33,8 @@ public class PlayMusicOne extends Activity  {
     private long timeLeftInMillis = 0; //Setup this value by click OK in popup timer
     private long gongTimeLeftInMillis = 0;
     private int gongTimeResponse = -1;
+    private SeekBar volumeSeekbar=null;
+    private AudioManager audioManager=null;
     ConstraintLayout background;
     int backgroudImage;
     int musicFileIntro;
@@ -37,7 +43,7 @@ public class PlayMusicOne extends Activity  {
     CountDownTimer countDownTimer2;
     Integer [] images = {R.drawable.background_play,R.drawable.monk_background,R.drawable.mountain_background,
                          R.drawable.background_play,R.drawable.monk_background,R.drawable.mountain_background};
-    Integer [] musics_intro = {R.raw.kalimba_test_hq,R.raw.intro,R.raw.kalimba_test_hq,R.raw.intro,R.raw.kalimba_test_hq,R.raw.intro};
+    Integer [] musics_intro = {R.raw.birds,R.raw.water,R.raw.kalimba_test_hq,R.raw.intro,R.raw.kalimba_test_hq,R.raw.intro};
     Integer [] musics_main = {R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka,R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka};
 
 
@@ -57,6 +63,8 @@ public class PlayMusicOne extends Activity  {
         musicFileIntro = musics_intro[extras];
         musicFileMain = musics_main[extras];
 
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        volumeControl();
 
         background = (ConstraintLayout) findViewById(R.id.constraintid);
         background.setBackgroundResource(backgroudImage);
@@ -73,6 +81,7 @@ public class PlayMusicOne extends Activity  {
         stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
 
         gongButton = (Button) findViewById(R.id.gong_button);
+        addSoundButton = (Button) findViewById(R.id.add_sound_button);
 
         plmdx = PerfectLoopMediaPlayer.create(PlayMusicOne.this, musicFileIntro);
         plmdx.prepare();
@@ -109,6 +118,14 @@ public class PlayMusicOne extends Activity  {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Popsetup_gong.class);
                 startActivityForResult(intent,2);
+            }
+        });
+
+        addSoundButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),AddMusic.class);
+                startActivityForResult(intent,3);
             }
         });
     }
@@ -221,7 +238,6 @@ public class PlayMusicOne extends Activity  {
             @Override
             public void onFinish() {
                 try {
-                    gongButton.setText("fin");
                     gong.start();
                     gongButton.setVisibility(View.INVISIBLE);
                 } catch (Exception e){
@@ -229,5 +245,37 @@ public class PlayMusicOne extends Activity  {
                 }
             }
         }.start();
+    }
+
+    private void volumeControl(){
+        try {
+            volumeSeekbar = (SeekBar) findViewById(R.id.seekVolume);
+            audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+            volumeSeekbar.setMax(audioManager.getStreamMaxVolume(audioManager.STREAM_MUSIC));
+            //volumeSeekbar.setProgress(audioManager.getStreamVolume(audioManager.STREAM_MUSIC));
+
+            volumeSeekbar.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
+
+            volumeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress,AudioManager.FLAG_PLAY_SOUND);
+
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

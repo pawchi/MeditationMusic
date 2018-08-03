@@ -177,7 +177,7 @@
             android:layout_marginStart="5dp"
             android:background="@android:color/holo_blue_dark"
             android:text="@string/button_timer_ok"
-            app:layout_constraintLeft_toLeftOf="@+id/popup"
+            app:layout_constraintLeft_toLeftOf="@+id/constraint_lay_gong"
             app:layout_constraintTop_toBottomOf="@+id/linear_layout_popup1" />
 
         <Button
@@ -189,7 +189,7 @@
             android:layout_marginStart="5dp"
             android:background="@android:color/holo_blue_dark"
             android:text="@string/button_timer_cancel"
-            app:layout_constraintRight_toRightOf="@+id/popup"
+            app:layout_constraintRight_toRightOf="@+id/constraint_lay_gong"
             app:layout_constraintTop_toBottomOf="@+id/linear_layout_popup1" />
 
     </LinearLayout>

@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class MainActivity extends Activity {
     ListView lst;
-    String[] musicType = {"Lake","Monk","Flower","Moon","Bird","Water","Wind","Lake","Monk","Flower","Moon","Bird","Water","Wind"};
+    String[] musicType = {"Birds","Water","Kalimba","Moon","Bird","Water","Wind","Lake","Monk","Flower","Moon","Bird","Water","Wind"};
     //String[] musicType;
     Integer[] image = {R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.moon_small,
                         R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.lake_small_squere,
