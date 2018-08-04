@@ -43,7 +43,7 @@ public class PlayMusicOne extends Activity  {
     CountDownTimer countDownTimer2;
     Integer [] images = {R.drawable.background_play,R.drawable.monk_background,R.drawable.mountain_background,
                          R.drawable.background_play,R.drawable.monk_background,R.drawable.mountain_background};
-    Integer [] musics_intro = {R.raw.birds,R.raw.water,R.raw.kalimba_test_hq,R.raw.intro,R.raw.kalimba_test_hq,R.raw.intro};
+    Integer [] musics_intro = {R.raw.birds,R.raw.water,R.raw.korg,R.raw.intro,R.raw.kalimba_test_hq,R.raw.intro};
     Integer [] musics_main = {R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka,R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka};
 
 
@@ -87,7 +87,7 @@ public class PlayMusicOne extends Activity  {
         plmdx.prepare();
         //plmdx.start();
 
-        gong = MediaPlayer.create(PlayMusicOne.this,R.raw.pani_lansienka);
+        gong = MediaPlayer.create(PlayMusicOne.this,R.raw.gong);
 
         //Button Play/Pause
         stopButton.setOnClickListener(new View.OnClickListener() {
