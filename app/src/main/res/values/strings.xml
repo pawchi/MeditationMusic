@@ -139,5 +139,7 @@
 
     <!--Popup up AddMusic   -->
     <string name="add_sound">Dodaj dźwięk:</string>
+    <string name="system_volume">Głośność systemowa</string>
+    <string name="birds">Ptaki</string>
 
 </resources>
