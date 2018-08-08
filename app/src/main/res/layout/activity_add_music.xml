@@ -162,6 +162,54 @@
                 android:layout_marginEnd="25dp"
                 android:src="@android:drawable/btn_dialog" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_horizontal_three_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal"
+
+
+
+            android:layout_marginTop="25dp"
+            >
+
+            <ImageView
+                android:id="@+id/music_1_added_test"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="2"
+                android:src="@android:drawable/btn_dialog"
+                />
+
+            <SeekBar
+                android:id="@+id/seekBar1_test"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="26"
+                android:thumb="@drawable/custom_thumb"
+
+
+
+                />
+
+            <ImageView
+                android:id="@+id/music_1_cancel_test"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="25dp"
+                android:src="@android:drawable/btn_dialog" />
+        </LinearLayout>
         <!--
         <LinearLayout
             android:layout_width="match_parent"
