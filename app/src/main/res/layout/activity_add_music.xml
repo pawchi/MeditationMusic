@@ -151,7 +151,7 @@
                 android:layout_weight="2.6"
                 android:thumb="@drawable/custom_thumb"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintTop_toTopOf="@+id/linear_layout_for_inserts" />
+                 />
 
             <ImageView
                 android:id="@+id/music_1_cancel"
