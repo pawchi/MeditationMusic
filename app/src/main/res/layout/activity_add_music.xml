@@ -41,14 +41,16 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
-            android:src="@android:drawable/btn_dialog" />
+            android:src="@android:drawable/btn_dialog"
+            android:onClick="addSound"/>
 
         <ImageView
             android:id="@+id/sound_2_to_add_imageview"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
-            android:src="@android:drawable/btn_dialog" />
+            android:src="@android:drawable/btn_dialog"
+            android:onClick="addSound"/>
 
         <ImageView
             android:id="@+id/sound_3_to_add_imageview"
