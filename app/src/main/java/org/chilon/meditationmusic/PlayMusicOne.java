@@ -3,7 +3,6 @@ package org.chilon.meditationmusic;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.Locale;
 
 public class PlayMusicOne extends Activity  {
@@ -64,7 +62,7 @@ public class PlayMusicOne extends Activity  {
         musicFileMain = musics_main[extras];
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        volumeControl();
+        volumeControlSeekbar();
 
         background = (ConstraintLayout) findViewById(R.id.constraintid);
         background.setBackgroundResource(backgroudImage);
@@ -161,7 +159,6 @@ public class PlayMusicOne extends Activity  {
              plmdx.start();
              stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
             gongButton.setVisibility(View.VISIBLE);
-
         }
     }
 
@@ -190,8 +187,9 @@ public class PlayMusicOne extends Activity  {
 
             public void onFinish() {
                 try {
-                    plmdx.stop();
-                    plmdx.prepare();
+                    plmdx.pause();
+                    //plmdx.stop();
+                    //plmdx.prepare();
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -200,6 +198,7 @@ public class PlayMusicOne extends Activity  {
                 stopButton.setBackgroundResource(android.R.drawable.ic_media_play);
                 timerButton.setBackgroundResource(android.R.drawable.ic_menu_recent_history);
                 timerButton.setText("");
+                gongButton.setVisibility(View.INVISIBLE);
 
             }
         }.start();
@@ -247,13 +246,11 @@ public class PlayMusicOne extends Activity  {
         }.start();
     }
 
-    private void volumeControl(){
+    private void volumeControlSeekbar(){
         try {
             volumeSeekbar = (SeekBar) findViewById(R.id.seekVolume);
             audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-            volumeSeekbar.setMax(audioManager.getStreamMaxVolume(audioManager.STREAM_MUSIC));
-            //volumeSeekbar.setProgress(audioManager.getStreamVolume(audioManager.STREAM_MUSIC));
-
+            volumeSeekbar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
             volumeSeekbar.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
 
             volumeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -265,17 +262,18 @@ public class PlayMusicOne extends Activity  {
 
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
-
                 }
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-
                 }
             });
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void refreshVolumeSeekbarPositionWhenSystemVolumeChanges(){
+
     }
 }

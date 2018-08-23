@@ -54,6 +54,8 @@ public class PopUpWindowTimer extends Activity {
             public void onClick(View v) {
                 if(sumOfRadioButtons!=0){
                     prepareResponse1();
+                } else {
+                    prepareResponse2();
                 }
                 finish();
             }
