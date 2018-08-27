@@ -9,21 +9,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AddMusic extends Activity {
-    PerfectLoopMediaPlayer music_1;
-    SeekBar mainSoundVolume;
-    SeekBar systemVolume;
-    ImageView firstSoundToAddImage;
-    ImageView secondSoundToAddImage;
-    ImageView thirdSoundToAddImage;
-    LinearLayout firstSoundToAddLayout;
+
     LinearLayout existingLayoutForInserts;
     PerfectLoopMediaPlayer soundOne;
     PerfectLoopMediaPlayer soundTwo;
     final int soundOneId = R.id.sound_1_to_add_imageview;
     final int soundTwoId = R.id.sound_2_to_add_imageview;
-    int cancelOneId;
-    int cancelTwoId;
     Integer tagOne = 1111;
     Integer tagTwo = 2222;
     ImageView cancelSoundOne;
@@ -32,61 +27,24 @@ public class AddMusic extends Activity {
     boolean view_1_inflated = false;
     Integer tempIdCancelViewOne;
     Integer tempIdCancelViewTwo;
+    int layoutId = R.layout.activity_add_music;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_music);
+
+        if(savedInstanceState!=null){
+            layoutId = savedInstanceState.getInt("storedLayoutId",R.layout.activity_add_music);
+            setContentView(layoutId);
+        } else {
+            setContentView(R.layout.activity_add_music);
+        }
+
+
         this.setFinishOnTouchOutside(false);
-
         existingLayoutForInserts = (LinearLayout) findViewById(R.id.linear_layout_for_inserts);
-        /*
-        firstSoundToAddImage = (ImageView) findViewById(R.id.sound_1_to_add_imageview);
-        firstSoundToAddImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                LayoutInflater rowInLinearLayoutToInflate = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                //existingLayoutForInserts = (LinearLayout) findViewById(R.id.linear_layout_for_inserts);
-
-                sound_1 = rowInLinearLayoutToInflate.inflate(R.layout.linearlayout_add_sound,existingLayoutForInserts,false);
-                existingLayoutForInserts.addView(sound_1);
-
-                soundTwo = PerfectLoopMediaPlayer.create(AddMusic.this,R.raw.water);
-                view_1_inflated=true;
-            }
-        });
-
-        secondSoundToAddImage = (ImageView) findViewById(R.id.sound_2_to_add_imageview);
-
-        secondSoundToAddImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-            }
-        });
-
-        //Add LinearLayout from XML
-        thirdSoundToAddImage = (ImageView) findViewById(R.id.sound_3_to_add_imageview);
-
-        thirdSoundToAddImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LayoutInflater rowInLinearLayoutToInflate = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                existingLayoutForInserts = (LinearLayout) findViewById(R.id.linear_layout_for_inserts);
-
-                View view = rowInLinearLayoutToInflate.inflate(R.layout.linearlayout_add_sound,existingLayoutForInserts,false);
-                existingLayoutForInserts.addView(view);
-
-                soundOne = PerfectLoopMediaPlayer.create(AddMusic.this,R.raw.korg);
-                soundOne.prepare();
-
-
-
-            }
-        });
-        */
     }
 
     public void onDelete(View view){
@@ -107,6 +65,7 @@ public class AddMusic extends Activity {
         LayoutInflater rowInLinearLayoutToInflate = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         sound_1 = rowInLinearLayoutToInflate.inflate(R.layout.linearlayout_add_sound,existingLayoutForInserts,false);
         existingLayoutForInserts.addView(sound_1);
+
 
         cancelSoundOne = (ImageView) findViewById(R.id.music_1_cancel__from_xml);
 
@@ -130,5 +89,17 @@ public class AddMusic extends Activity {
                 break;
 */
         }
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("storedLayoutId",layoutId);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }

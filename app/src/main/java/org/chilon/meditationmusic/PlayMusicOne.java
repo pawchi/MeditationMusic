@@ -41,7 +41,7 @@ public class PlayMusicOne extends Activity  {
     CountDownTimer countDownTimer2;
     Integer [] images = {R.drawable.background_play,R.drawable.monk_background,R.drawable.mountain_background,
                          R.drawable.background_play,R.drawable.monk_background,R.drawable.mountain_background};
-    Integer [] musics_intro = {R.raw.birds,R.raw.water,R.raw.korg,R.raw.intro,R.raw.kalimba_test_hq,R.raw.intro};
+    Integer [] musics_intro = {R.raw.birds,R.raw.water,R.raw.korg,R.raw.intro,R.raw.kalimba_test_hq,R.raw.waves};
     Integer [] musics_main = {R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka,R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka};
 
 
@@ -61,7 +61,7 @@ public class PlayMusicOne extends Activity  {
         musicFileIntro = musics_intro[extras];
         musicFileMain = musics_main[extras];
 
-        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        //setVolumeControlStream(AudioManager.STREAM_MUSIC);
         volumeControlSeekbar();
 
         background = (ConstraintLayout) findViewById(R.id.constraintid);
@@ -251,12 +251,14 @@ public class PlayMusicOne extends Activity  {
             volumeSeekbar = (SeekBar) findViewById(R.id.seekVolume);
             audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
             volumeSeekbar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+            //audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,AudioManager.ADJUST_SAME,AudioManager.FLAG_SHOW_UI);
             volumeSeekbar.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
 
             volumeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress,AudioManager.FLAG_PLAY_SOUND);
+                    //audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress,AudioManager.FLAG_PLAY_SOUND);
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress,AudioManager.FLAG_SHOW_UI);
 
                 }
 
