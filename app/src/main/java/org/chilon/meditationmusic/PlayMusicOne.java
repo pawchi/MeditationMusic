@@ -39,10 +39,11 @@ public class PlayMusicOne extends Activity  {
     int musicFileMain;
     String mainTitleText;
     CountDownTimer countDownTimer2;
-    Integer [] images = {R.drawable.background_play,R.drawable.monk_background,R.drawable.mountain_background,
-                         R.drawable.background_play,R.drawable.monk_background,R.drawable.mountain_background};
-    Integer [] musics_intro = {R.raw.birds,R.raw.water,R.raw.korg,R.raw.intro,R.raw.kalimba_test_hq,R.raw.waves};
-    Integer [] musics_main = {R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka,R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka};
+    Integer [] images = {R.drawable.energia_poranka_bg,R.drawable.gleboki_spokoj_bg,R.drawable.oczyszczajaca_wibracja_bg,
+                         R.drawable.piekno_natury_bg,R.drawable.prosto_z_serca_bg,R.drawable.spokojna_noc_bg,R.drawable.wszechobecna_harmonia_bg,
+                            R.drawable.bezruch_pustyni_bg,R.drawable.balsam_na_dusze,R.drawable.delikatny_trans,R.drawable.boski_glos_bg,R.drawable.melodia_nocy_bg};
+    Integer [] musics_intro = {R.raw.birds,R.raw.water,R.raw.korg,R.raw.intro,R.raw.kalimba_test_hq,R.raw.waves,R.raw.birds,R.raw.water,R.raw.korg,R.raw.intro,R.raw.kalimba_test_hq,R.raw.waves};
+    Integer [] musics_main = {R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka,R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka,R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka,R.raw.kalimba,R.raw.birds,R.raw.pani_lansienka};
 
 
 
@@ -95,7 +96,7 @@ public class PlayMusicOne extends Activity  {
                     stopButton.setBackgroundResource(android.R.drawable.ic_media_play);
                     plmdx.pause();
                 } else {
-                    stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
+                    stopButton.setBackgroundResource(R.drawable.pause);
                     plmdx.start();
                 }
             }

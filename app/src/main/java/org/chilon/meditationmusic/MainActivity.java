@@ -16,13 +16,13 @@ import java.util.Random;
 
 public class MainActivity extends Activity {
     ListView lst;
-    String[] musicType = {"Birds","Water","Korg","Short Lansienka","Kalimba","Waves","Wind","Lake","Monk","Flower","Moon","Bird","Water","Wind"};
+    String[] musicType = {"Birds","Water","Korg","Short Lansienka","Kalimba","Waves","Wind","Lake","Monk","Flower","Moon"};
     //String[] musicType;
     Integer[] image = {R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.moon_small,
                         R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.lake_small_squere,
                         R.drawable.monk_smal_squerel,R.drawable.flower_small_squere,R.drawable.moon_small,
-                        R.drawable.lake_small_squere,R.drawable.monk_smal_squerel,R.drawable.flower_small_squere};
-    String [] itemColor = {"#d7e4f5","#b3cde0","#6497b1","#708090","#006666","#008080","#66b2b2","#b2d8d8","#b3cde0","#6497b1","#005b96","#03396c","#011f4b","#b3cde0"};
+                        R.drawable.lake_small_squere};
+    String [] itemColor = {"#d7e4f5","#b3cde0","#6497b1","#708090","#006666","#008080","#66b2b2","#b2d8d8","#b3cde0","#6497b1","#005b96","#03396c"};
     String musicTypeItem;
     public static final String MAIN_RESPONSE = "main_response";
     TextView quotSentence;
