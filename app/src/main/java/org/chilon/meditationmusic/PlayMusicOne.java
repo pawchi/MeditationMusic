@@ -80,6 +80,7 @@ public class PlayMusicOne extends Activity  {
         stopButton.setBackgroundResource(android.R.drawable.ic_media_pause);
 
         gongButton = (Button) findViewById(R.id.gong_button);
+        gongButton.setBackgroundResource(R.drawable.gong);
         addSoundButton = (Button) findViewById(R.id.add_sound_button);
 
         plmdx = PerfectLoopMediaPlayer.create(PlayMusicOne.this, musicFileIntro);
