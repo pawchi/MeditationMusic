@@ -94,7 +94,7 @@ public class PlayMusicOne extends Activity  {
             @Override
             public void onClick(View v) {
                 if (plmdx.isPlaying()) {
-                    stopButton.setBackgroundResource(android.R.drawable.ic_media_play);
+                    stopButton.setBackgroundResource(R.drawable.play_icon);
                     plmdx.pause();
                 } else {
                     stopButton.setBackgroundResource(R.drawable.pause);

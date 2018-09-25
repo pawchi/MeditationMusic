@@ -27,7 +27,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="40dp"
-        android:background="@android:drawable/ic_media_pause"
+        android:background="@drawable/pause"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/timerid"
         app:layout_constraintHorizontal_bias="0.5"
