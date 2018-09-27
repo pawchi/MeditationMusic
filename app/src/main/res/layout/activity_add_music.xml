@@ -9,6 +9,7 @@
     android:layout_marginEnd="10dp"
     android:id="@+id/constraint_layout_add_music"
     android:layout_gravity="center_horizontal|center_vertical"
+    android:background="@color/add_sound_background"
     tools:context=".AddMusic">
 
     <TextView
@@ -18,12 +19,15 @@
         android:layout_marginTop="16dp"
         android:text="@string/add_sound"
         android:textAlignment="center"
+        android:textColor="@color/add_sound_text"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linear_layout_add_music_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -34,41 +38,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_music_text"
-        android:id="@+id/linear_layout_add_music_1">
+        >
 
         <ImageView
             android:id="@+id/sound_1_to_add_imageview"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="25dp"
-            android:src="@android:drawable/btn_dialog"
+            android:src="@drawable/sound_birds"
             android:onClick="addSound"/>
 
         <ImageView
             android:id="@+id/sound_2_to_add_imageview"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="25dp"
-            android:src="@android:drawable/btn_dialog"
+            android:src="@drawable/sound_dropofwater"
             android:onClick="addSound"/>
 
         <ImageView
             android:id="@+id/sound_3_to_add_imageview"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="25dp"
-            android:src="@android:drawable/btn_dialog" />
+            android:src="@drawable/sound_guitar" />
 
         <ImageView
             android:id="@+id/music_4"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginEnd="25dp"
             android:layout_marginStart="25dp"
-            android:src="@android:drawable/btn_dialog" />
+            android:src="@drawable/sound_koshi" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear_layout_add_music_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -79,36 +84,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear_layout_add_music_1"
-        android:id="@+id/linear_layout_add_music_2">
+        >
 
         <ImageView
             android:id="@+id/music_5"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="25dp"
-            android:src="@android:drawable/btn_dialog" />
+            android:src="@drawable/sound_ohm" />
 
         <ImageView
             android:id="@+id/music_6"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="25dp"
-            android:src="@android:drawable/btn_dialog" />
+            android:src="@drawable/sound_piano" />
 
         <ImageView
             android:id="@+id/music_7"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="25dp"
-            android:src="@android:drawable/btn_dialog" />
+            android:src="@drawable/sound_rainmaker" />
 
         <ImageView
             android:id="@+id/music_8"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginEnd="25dp"
             android:layout_marginStart="25dp"
-            android:src="@android:drawable/btn_dialog" />
+            android:src="@drawable/sound_stream" />
     </LinearLayout>
 
     <LinearLayout
@@ -121,6 +126,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linear_layout_add_music_2"
         android:gravity="center_horizontal">
 
+        <!--
         <LinearLayout
             android:id="@+id/linear_layout_horizontal_three_elem"
             android:layout_width="match_parent"
@@ -145,7 +151,6 @@
 
             <SeekBar
                 android:id="@+id/seekBar1"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -172,9 +177,6 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:orientation="horizontal"
-
-
-
             android:layout_marginTop="25dp"
             >
 
@@ -198,9 +200,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="26"
                 android:thumb="@drawable/custom_thumb"
-
-
-
                 />
 
             <ImageView
@@ -213,6 +212,8 @@
                 android:layout_marginEnd="25dp"
                 android:src="@android:drawable/btn_dialog" />
         </LinearLayout>
+        -->
+
         <!--
         <LinearLayout
             android:layout_width="match_parent"
@@ -247,7 +248,9 @@
             android:gravity="center_horizontal"
             android:text="@string/system_volume"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textColor="@color/add_sound_text"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/linear_layout_horizontal_general_vol"
@@ -258,6 +261,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             >
 
             <ImageView
@@ -268,7 +272,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="0.2"
-                android:src="@android:drawable/btn_dialog"
+                android:src="@drawable/volume_up_black"
                 />
 
             <SeekBar

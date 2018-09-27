@@ -38,16 +38,13 @@ public class PopUpWindowTimer extends Activity {
         rgMinTenth=(RadioGroup) findViewById(R.id.radioGroup2);
         timerOk=(Button) findViewById(R.id.button_timer_ok);
         timerCancel=(Button) findViewById(R.id.button_timer_cancel);
-        //*************************
-        //Set screen in %: (int)(width*.9) = 90%
 
+        //Set screen in %: (int)(width*.9) = 90%
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         getWindow().setLayout((int)(width*.8),(int)(height*.8));
-
-        //*************************
 
         timerOk.setOnClickListener(new View.OnClickListener() {
             @Override
