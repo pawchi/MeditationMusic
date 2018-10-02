@@ -2,21 +2,25 @@ package org.chilon.meditationmusic;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.AudioManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.chilon.meditationmusic.content_provider.OnVolumeChangedListener;
+import org.chilon.meditationmusic.content_provider.VolumeSettingsContentObserver;
 
 public class AddMusic extends Activity {
 
     LinearLayout existingLayoutForInserts;
     PerfectLoopMediaPlayer soundOne;
     PerfectLoopMediaPlayer soundTwo;
+    SeekBar volumeSeekbar;
     final int soundOneId = R.id.sound_1_to_add_imageview;
     final int soundTwoId = R.id.sound_2_to_add_imageview;
     Integer tagOne = 1111;
@@ -28,6 +32,13 @@ public class AddMusic extends Activity {
     Integer tempIdCancelViewOne;
     Integer tempIdCancelViewTwo;
     int layoutId = R.layout.activity_add_music;
+    VolumeSettingsContentObserver volumeSettingsContentObserver;
+    OnVolumeChangedListener listener = new OnVolumeChangedListener() {
+        @Override
+        public void onVolumeChanged(int currentVolume) {
+            volumeSeekbar.setProgress(currentVolume);
+        }
+    };
 
 
     @Override
@@ -42,9 +53,43 @@ public class AddMusic extends Activity {
         }
 
 
+        volumeSeekbar = findViewById(R.id.gen_vol_seekBar);
+        volumeSeekbar.setMin(0);
+        volumeSeekbar.setMax(15);
+        volumeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                volumeSettingsContentObserver.setVolume(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
         this.setFinishOnTouchOutside(false);
         existingLayoutForInserts = (LinearLayout) findViewById(R.id.linear_layout_for_inserts);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        volumeSettingsContentObserver = new VolumeSettingsContentObserver(this, new Handler(Looper.getMainLooper()), listener);
+        volumeSettingsContentObserver.register(this);
+        volumeSeekbar.setProgress(volumeSettingsContentObserver.getVolume());
+    }
+
+    @Override
+    protected void onStop() {
+        volumeSettingsContentObserver.unregister(this);
+        super.onStop();
     }
 
     public void onDelete(View view){
