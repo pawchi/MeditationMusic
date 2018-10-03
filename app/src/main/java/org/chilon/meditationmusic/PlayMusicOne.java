@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.constraint.ConstraintLayout;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -53,7 +55,11 @@ public class PlayMusicOne extends Activity {
     OnVolumeChangedListener listener = new OnVolumeChangedListener() {
         @Override
         public void onVolumeChanged(int currentVolume) {
-            volumeSeekbar.setProgress(currentVolume);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                volumeSeekbar.setProgress(currentVolume, true);
+            } else {
+                volumeSeekbar.setProgress(currentVolume);
+            }
         }
     };
 
@@ -178,7 +184,6 @@ public class PlayMusicOne extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        volumeSettingsContentObserver = new VolumeSettingsContentObserver(this, new Handler(Looper.getMainLooper()), listener);
         volumeSettingsContentObserver.register(this);
         volumeSeekbar.setProgress(volumeSettingsContentObserver.getVolume());
     }
@@ -187,6 +192,11 @@ public class PlayMusicOne extends Activity {
     protected void onStop() {
         volumeSettingsContentObserver.unregister(this);
         super.onStop();
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        return volumeSettingsContentObserver.dispatchKeyEvent(event) || super.dispatchKeyEvent(event);
     }
 
     //Stop MediaPlayer by changing activity
@@ -274,12 +284,9 @@ public class PlayMusicOne extends Activity {
     }
 
     private void volumeControlSeekbar() {
-        volumeSeekbar = (SeekBar) findViewById(R.id.seekVolume);
+        volumeSettingsContentObserver = new VolumeSettingsContentObserver(this, new Handler(Looper.getMainLooper()), listener);
+        volumeSeekbar = findViewById(R.id.seekVolume);
         volumeSeekbar.setMax(15);
         volumeSeekbar.setOnSeekBarChangeListener(volumeSettingsContentObserver);
-    }
-
-    private void refreshVolumeSeekbarPositionWhenSystemVolumeChanges() {
-
     }
 }
