@@ -4,8 +4,9 @@ import android.content.Context;
 import android.database.ContentObserver;
 import android.media.AudioManager;
 import android.os.Handler;
+import android.widget.SeekBar;
 
-public class VolumeSettingsContentObserver extends ContentObserver {
+public class VolumeSettingsContentObserver extends ContentObserver implements SeekBar.OnSeekBarChangeListener {
     private AudioManager audioManager;
     private OnVolumeChangedListener listener;
 
@@ -40,6 +41,21 @@ public class VolumeSettingsContentObserver extends ContentObserver {
 
     public void unregister(Context context) {
         context.getApplicationContext().getContentResolver().unregisterContentObserver(this);
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+        setVolume(progress);
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
     }
 }
 

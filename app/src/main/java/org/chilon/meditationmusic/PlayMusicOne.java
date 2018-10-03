@@ -7,11 +7,16 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import org.chilon.meditationmusic.content_provider.OnVolumeChangedListener;
+import org.chilon.meditationmusic.content_provider.VolumeSettingsContentObserver;
 
 import java.util.Locale;
 
@@ -32,7 +37,6 @@ public class PlayMusicOne extends Activity {
     private long gongTimeLeftInMillis = 0;
     private int gongTimeResponse = -1;
     private SeekBar volumeSeekbar = null;
-    private AudioManager audioManager = null;
     ConstraintLayout background;
     int backgroudImage;
     int musicFileIntro;
@@ -44,6 +48,14 @@ public class PlayMusicOne extends Activity {
             R.drawable.bezruch_pustyni_bg, R.drawable.balsam_na_dusze, R.drawable.delikatny_trans, R.drawable.boski_glos_bg, R.drawable.melodia_nocy_bg};
     Integer[] musics_intro = {R.raw.birds, R.raw.water, R.raw.korg, R.raw.intro, R.raw.kalimba_test_hq, R.raw.waves, R.raw.birds, R.raw.water, R.raw.korg, R.raw.intro, R.raw.kalimba_test_hq, R.raw.waves};
     Integer[] musics_main = {R.raw.kalimba, R.raw.birds, R.raw.pani_lansienka, R.raw.kalimba, R.raw.birds, R.raw.pani_lansienka, R.raw.kalimba, R.raw.birds, R.raw.pani_lansienka, R.raw.kalimba, R.raw.birds, R.raw.pani_lansienka};
+
+    VolumeSettingsContentObserver volumeSettingsContentObserver;
+    OnVolumeChangedListener listener = new OnVolumeChangedListener() {
+        @Override
+        public void onVolumeChanged(int currentVolume) {
+            volumeSeekbar.setProgress(currentVolume);
+        }
+    };
 
 
     @Override
@@ -163,6 +175,20 @@ public class PlayMusicOne extends Activity {
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        volumeSettingsContentObserver = new VolumeSettingsContentObserver(this, new Handler(Looper.getMainLooper()), listener);
+        volumeSettingsContentObserver.register(this);
+        volumeSeekbar.setProgress(volumeSettingsContentObserver.getVolume());
+    }
+
+    @Override
+    protected void onStop() {
+        volumeSettingsContentObserver.unregister(this);
+        super.onStop();
+    }
+
     //Stop MediaPlayer by changing activity
     @Override
     protected void onDestroy() {
@@ -248,32 +274,9 @@ public class PlayMusicOne extends Activity {
     }
 
     private void volumeControlSeekbar() {
-        try {
-            volumeSeekbar = (SeekBar) findViewById(R.id.seekVolume);
-            audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-            volumeSeekbar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
-            //audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,AudioManager.ADJUST_SAME,AudioManager.FLAG_SHOW_UI);
-            volumeSeekbar.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
-
-            volumeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    //audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress,AudioManager.FLAG_PLAY_SOUND);
-                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, AudioManager.FLAG_SHOW_UI);
-
-                }
-
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {
-                }
-
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        volumeSeekbar = (SeekBar) findViewById(R.id.seekVolume);
+        volumeSeekbar.setMax(15);
+        volumeSeekbar.setOnSeekBarChangeListener(volumeSettingsContentObserver);
     }
 
     private void refreshVolumeSeekbarPositionWhenSystemVolumeChanges() {

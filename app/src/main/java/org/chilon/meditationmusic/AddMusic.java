@@ -54,24 +54,8 @@ public class AddMusic extends Activity {
 
 
         volumeSeekbar = findViewById(R.id.gen_vol_seekBar);
-        volumeSeekbar.setMin(0);
         volumeSeekbar.setMax(15);
-        volumeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                volumeSettingsContentObserver.setVolume(progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
+        volumeSeekbar.setOnSeekBarChangeListener(volumeSettingsContentObserver);
 
         this.setFinishOnTouchOutside(false);
         existingLayoutForInserts = (LinearLayout) findViewById(R.id.linear_layout_for_inserts);
