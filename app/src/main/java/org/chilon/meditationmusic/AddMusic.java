@@ -2,10 +2,11 @@ package org.chilon.meditationmusic;
 
 import android.app.Activity;
 import android.content.Context;
-import android.media.AudioManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -36,7 +37,11 @@ public class AddMusic extends Activity {
     OnVolumeChangedListener listener = new OnVolumeChangedListener() {
         @Override
         public void onVolumeChanged(int currentVolume) {
-            volumeSeekbar.setProgress(currentVolume);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                volumeSeekbar.setProgress(currentVolume, true);
+            } else {
+                volumeSeekbar.setProgress(currentVolume);
+            }
         }
     };
 
@@ -52,26 +57,7 @@ public class AddMusic extends Activity {
             setContentView(R.layout.activity_add_music);
         }
 
-
-        volumeSeekbar = findViewById(R.id.gen_vol_seekBar);
-        volumeSeekbar.setMin(0);
-        volumeSeekbar.setMax(15);
-        volumeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                volumeSettingsContentObserver.setVolume(progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
+        volumeControlSeekbar();
 
         this.setFinishOnTouchOutside(false);
         existingLayoutForInserts = (LinearLayout) findViewById(R.id.linear_layout_for_inserts);
@@ -81,7 +67,6 @@ public class AddMusic extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        volumeSettingsContentObserver = new VolumeSettingsContentObserver(this, new Handler(Looper.getMainLooper()), listener);
         volumeSettingsContentObserver.register(this);
         volumeSeekbar.setProgress(volumeSettingsContentObserver.getVolume());
     }
@@ -90,6 +75,11 @@ public class AddMusic extends Activity {
     protected void onStop() {
         volumeSettingsContentObserver.unregister(this);
         super.onStop();
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        return volumeSettingsContentObserver.dispatchKeyEvent(event) || super.dispatchKeyEvent(event);
     }
 
     public void onDelete(View view){
@@ -134,7 +124,13 @@ public class AddMusic extends Activity {
                 break;
 */
         }
+    }
 
+    private void volumeControlSeekbar() {
+        volumeSettingsContentObserver = new VolumeSettingsContentObserver(this, new Handler(Looper.getMainLooper()), listener);
+        volumeSeekbar = findViewById(R.id.gen_vol_seekBar);
+        volumeSeekbar.setMax(15);
+        volumeSeekbar.setOnSeekBarChangeListener(volumeSettingsContentObserver);
     }
 
     @Override
